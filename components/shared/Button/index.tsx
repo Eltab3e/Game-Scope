@@ -5,7 +5,7 @@ import Spinner from "../Spinner";
 const StyledButton = styled.button<any>`
     width: ${(props) => (props.fullWidth ? "100%" : "default")};
     color: ${(props) => props.theme.colors.text};
-    font-size: ${(props) => props.theme.fontSizes.medium};
+    font-size: ${(props) => props.theme.fontSizes.base};
     border: ${(props) => {
         if (props.variant === "outline") {
             return `1px solid ${props.theme.colors.cta}`;

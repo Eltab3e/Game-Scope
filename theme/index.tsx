@@ -9,10 +9,13 @@ const theme = {
         red: "#FF7262",
     },
     fontSizes: {
-        small: "1.4rem",
-        medium: "1.6rem",
-        large: "1.8rem",
-        extra: "2rem",
+        h1: "6.7rem",
+        h2: "5.1rem",
+        h3: "3.8rem",
+        h4: "2.8rem",
+        h5: "2.2rem",
+        base: "1.6rem",
+        caption: "1.2rem",
     },
 };
 

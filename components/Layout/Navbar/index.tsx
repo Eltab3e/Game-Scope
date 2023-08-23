@@ -2,26 +2,27 @@ import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 
+import { space } from "@/app/layout";
+import { navLinks } from "@/constants";
 import Button from "@/components/shared/Button";
 
 const Container = styled.div`
-    width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 15px 40px;
-    background-color: ${(props) => props.theme.colors.backgroundPrimary};
     color: ${(props) => props.theme.colors.text};
-    font-size: ${(props) => props.theme.fontSizes.large};
+    background-color: ${(props) => props.theme.colors.backgroundPrimary};
 `;
 
 const LogoWrapper = styled.div`
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
 `;
 
 const Title = styled.h1`
-    font-size: ${(props) => props.theme.fontSizes.extra};
+    font-size: ${(props) => props.theme.fontSizes.h4};
+    font-weight: 400;
 `;
 
 const NavWrapper = styled.div`
@@ -36,7 +37,10 @@ const NavList = styled.ul`
     list-style: none;
 `;
 
-const NavItem = styled(Link)``;
+const NavItem = styled(Link)`
+    font-size: ${(props) => props.theme.fontSizes.h5};
+    font-weight: 400;
+`;
 
 const UserIcon = () => (
     <Image
@@ -57,13 +61,18 @@ const Navbar = () => {
                     width={"32"}
                     height={"32"}
                 />
-                <Title>GAME SCOPE</Title>
+                <Title className={space.className}>GAME SCOPE</Title>
             </LogoWrapper>
             <NavWrapper>
                 <NavList>
-                    <NavItem href={"/"}>Marketplace</NavItem>
-                    <NavItem href={"/"}>Rankings</NavItem>
-                    <NavItem href={"/"}>About</NavItem>
+                    {navLinks.map((link) => (
+                        <NavItem
+                            href={link.url}
+                            key={link.title}
+                        >
+                            {link.title}
+                        </NavItem>
+                    ))}
                 </NavList>
                 <Button
                     variant="primary"
