@@ -60,6 +60,7 @@ const Button = ({
     variant,
     height,
     color,
+    postIcon,
     preIcon,
     type,
     loading,
@@ -71,6 +72,7 @@ const Button = ({
     variant?: "primary" | "outline";
     height?: "primary" | "secondary" | "tertiary";
     color?: string;
+    postIcon?: any;
     preIcon?: any;
     type?: "button" | "submit" | "reset" | undefined;
     loading?: boolean;
@@ -78,6 +80,7 @@ const Button = ({
     fullWidth?: boolean;
     animate?: boolean;
 }) => {
+    const PostIcon = postIcon;
     const PreIcon = preIcon;
 
     const generateIconColor = (props: any) => {
@@ -101,8 +104,9 @@ const Button = ({
             fullWidth={fullWidth}
             animate={animate ? true : undefined}
         >
-            {loading ? <Spinner /> : children}
             {PreIcon && <PreIcon color={generateIconColor} />}
+            {loading ? <Spinner /> : children}
+            {PostIcon && <PostIcon color={generateIconColor} />}
         </StyledButton>
     );
 };
