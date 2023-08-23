@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
-import { styled } from "styled-components";
-import Spinner from "../Spinner/Spinner";
+import styled from "styled-components";
+import Spinner from "../Spinner";
 
 const StyledButton = styled.button<any>`
     width: ${(props) => (props.fullWidth ? "100%" : "default")};

@@ -1,6 +1,3 @@
-import { ReactNode } from "react";
-import { ThemeProvider } from "styled-components";
-
 const theme = {
     colors: {
         backgroundPrimary: "#2B2B2B",
@@ -19,8 +16,4 @@ const theme = {
     },
 };
 
-const Theme = ({ children }: { children: ReactNode }) => {
-    return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
-};
-
-export default Theme;
+export default theme;
