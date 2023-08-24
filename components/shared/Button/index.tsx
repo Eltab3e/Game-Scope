@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Spinner from "../Spinner";
 
 const StyledButton = styled.button<any>`
-    width: ${(props) => (props.fullWidth ? "100%" : "default")};
+    width: ${(props) => (props.fullwidth ? "100%" : "default")};
     color: ${(props) => props.theme.colors.text};
     font-size: ${(props) => props.theme.fontSizes.base};
     border: ${(props) => {
@@ -65,7 +65,7 @@ const Button = ({
     type,
     loading,
     onClick,
-    fullWidth,
+    fullwidth,
     animate,
 }: {
     children: ReactNode;
@@ -77,7 +77,7 @@ const Button = ({
     type?: "button" | "submit" | "reset" | undefined;
     loading?: boolean;
     onClick?: () => void;
-    fullWidth?: boolean;
+    fullwidth?: any;
     animate?: boolean;
 }) => {
     const PostIcon = postIcon;
@@ -101,7 +101,7 @@ const Button = ({
             color={color}
             type={type}
             onClick={onClick}
-            fullWidth={fullWidth}
+            fullwidth={fullwidth}
             animate={animate ? true : undefined}
         >
             {PreIcon && <PreIcon color={generateIconColor} />}

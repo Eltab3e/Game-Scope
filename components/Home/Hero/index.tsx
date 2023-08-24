@@ -1,23 +1,22 @@
 import Image from "next/image";
 import styled from "styled-components";
+
 import { space } from "@/app/layout";
 import Button from "@/components/shared/Button";
 
 const Container = styled.div`
-    background-color: ${(props) => props.theme.colors.backgroundPrimary};
-    color: ${(props) => props.theme.colors.text};
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    padding: 40px;
-    gap: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    color: ${(props) => props.theme.colors.text};
 `;
 
 const TextSection = styled.div`
-    grid-column: 2 / 5;
+    grid-column: 1 / 2;
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 25px;
+    gap: 50px;
+    padding: 25px;
 `;
 
 const Title = styled.h1`
@@ -28,12 +27,15 @@ const Title = styled.h1`
 const SubTitle = styled.h3`
     font-size: ${(props) => props.theme.fontSizes.h5};
     font-weight: 400;
+    margin-right: 130px;
+`;
+
+const ButtonWrapper = styled.div`
+    width: 200px;
 `;
 
 const Figures = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 50px;
 `;
 
@@ -47,23 +49,27 @@ const Item = styled.div`
 `;
 
 const ImageSection = styled.div`
-    grid-column: 5 / 8;
+    grid-column: 2 / 3;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 45px;
 `;
 
 const ImageWrapper = styled.div`
     position: relative;
-    width: 60%;
+    width: 75%;
     height: 75%;
 `;
 
 const BottomCard = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    padding-top: 15px;
+    gap: 20px;
+    padding: 20px;
     background-color: ${(props) => props.theme.colors.backgroundSecondary};
+    border-radius: 0 0 16px 16px;
+    width: 75%;
 `;
 
 const Text = styled.h1`
@@ -71,7 +77,15 @@ const Text = styled.h1`
     font-weight: 500;
 `;
 
-const SubText = styled.h1`
+const SubText = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 5px;
+`;
+
+const Avatar = styled.div``;
+
+const Name = styled.h1`
     font-size: ${(props) => props.theme.fontSizes.base};
     font-weight: 500;
 `;
@@ -98,14 +112,15 @@ const Hero = () => {
                     NFT MARKETPLACE UI CREATD WITH ANIMA FOR FIGMA. COLLECT, BUY AND SELL ART FROM
                     MORE THAN 20K NFT ARTISTS.
                 </SubTitle>
-                <div>
+                <ButtonWrapper>
                     <Button
                         variant="primary"
                         preIcon={RocketIcon}
+                        fullwidth
                     >
                         Get Started
                     </Button>
-                </div>
+                </ButtonWrapper>
                 <Figures>
                     <Items className={space.className}>
                         240K+ <Item>Sales</Item>
@@ -125,12 +140,21 @@ const Hero = () => {
                         src={"/images/ImagePlaceholder.png"}
                         alt="image"
                         fill
-                        priority
                     />
                 </ImageWrapper>
                 <BottomCard>
                     <Text>Space Walking</Text>
-                    <SubText>Animakid</SubText>
+                    <SubText>
+                        <Avatar>
+                            <Image
+                                src={"/avatars/Avatar14.png"}
+                                alt="avatar"
+                                width={25}
+                                height={25}
+                            />
+                        </Avatar>
+                        <Name>Animakid</Name>
+                    </SubText>
                 </BottomCard>
             </ImageSection>
         </Container>
