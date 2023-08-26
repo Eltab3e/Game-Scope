@@ -1,12 +1,12 @@
 const theme = {
     colors: {
-        backgroundPrimary: "#2B2B2B",
-        backgroundSecondary: "#3B3B3B",
-        caption: "#858584",
-        text: "#FFFFFF",
-        cta: "#A259FF",
+        primaryBg: "#2B2B2B",
+        secondaryBg: "#3B3B3B",
+        grey: "#858584",
+        white: "#FFFFFF",
+        purple: "#A259FF",
         blue: "#377DF7",
-        red: "#FF7262",
+        red: "#FF6250",
     },
     fontSizes: {
         h1: "6.7rem",

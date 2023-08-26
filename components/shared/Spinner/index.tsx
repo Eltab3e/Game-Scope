@@ -1,17 +1,18 @@
+//required
 import styled from "styled-components";
 
 const Container = styled.div<any>`
     display: inline-block;
     position: relative;
-    width: 15px;
-    height: 15px;
+    width: 1.5rem;
+    height: 1.5rem;
 
     & div {
         box-sizing: border-box;
         display: block;
         position: absolute;
-        width: 20px;
-        height: 20px;
+        width: 2rem;
+        height: 2rem;
         margin: 0 auto;
         border: 2px solid ${(props) => props.color || "#fff"};
         border-radius: 50%;
