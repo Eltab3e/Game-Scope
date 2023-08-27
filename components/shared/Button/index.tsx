@@ -10,10 +10,9 @@ interface ButtonProps {
     preIcon?: React.ElementType;
     postIcon?: React.ElementType;
     loading?: boolean;
-    fullWidth?: boolean;
+    fullwidth?: boolean;
     onClick?: () => void;
     variant?: "primary" | "outline";
-    padding?: "primary" | "secondary";
     type?: "button" | "submit" | "reset";
     height?: "primary" | "secondary" | "tertiary";
 }
@@ -30,7 +29,7 @@ const StyledButton = styled.button<any>`
     border-radius: 2rem;
 
     font-size: ${(props) => props.theme.fontSizes.base};
-    width: ${(props) => (props.fullWidth ? "100%" : "auto")};
+    width: ${(props) => (props.fullwidth ? "100%" : "auto")};
 
     height: ${(props) => {
         switch (props.height) {
@@ -40,17 +39,6 @@ const StyledButton = styled.button<any>`
                 return "6rem";
             case "tertiary":
                 return "4.6rem";
-            default:
-                return;
-        }
-    }};
-
-    padding: ${(props) => {
-        switch (props.padding) {
-            case "primary":
-                return "0 5rem";
-            case "secondary":
-                return "0 3rem";
             default:
                 return;
         }
@@ -96,20 +84,18 @@ const Button: React.FC<ButtonProps> = ({
     preIcon: PreIcon,
     postIcon: PostIcon,
     loading,
-    fullWidth,
+    fullwidth,
     onClick,
     variant,
-    padding,
     type,
     height,
 }: ButtonProps) => {
     return (
         <StyledButton
             color={color}
-            fullWidth={fullWidth}
+            fullwidth={fullwidth}
             onClick={onClick}
             variant={variant}
-            padding={padding}
             type={type}
             height={height}
         >

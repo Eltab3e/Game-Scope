@@ -5,12 +5,9 @@ import Image from "next/image";
 import { test } from "@/constants";
 
 const Container = styled.div`
-    background-color: ${(props) => props.theme.colors.PrimaryBg};
-    color: ${(props) => props.theme.colors.white};
     display: flex;
     flex-direction: column;
     gap: 6rem;
-    padding: 8rem 19.5rem;
 `;
 
 const TextWrapper = styled.div`
@@ -36,7 +33,6 @@ const Gallery = styled.div`
 `;
 
 const Card = styled.div`
-    width: 33rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -44,7 +40,6 @@ const Card = styled.div`
 
 const MainImageWrapper = styled.div`
     position: relative;
-    width: 33rem;
     height: 33rem;
     border-radius: 2rem;
     overflow: hidden;

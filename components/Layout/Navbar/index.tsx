@@ -12,6 +12,7 @@ const Container = styled.div`
     background-color: ${(props) => props.theme.colors.primaryBg};
     color: ${(props) => props.theme.colors.white};
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding: 2rem 5rem;
 `;
@@ -19,7 +20,7 @@ const Container = styled.div`
 const LogoWrapper = styled.div`
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.2rem;
 `;
 
 const Logo = styled.div`
@@ -33,24 +34,21 @@ const Title = styled.h4`
     font-weight: 400;
 `;
 
-const NavWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-`;
-
 const NavList = styled.ul`
     display: flex;
     align-items: center;
     list-style: none;
-    gap: 1.2rem;
+    gap: 1.5rem;
 `;
 
-const NavItem = styled(Link)`
+const NavItem = styled.div`
+    padding: 0 3rem;
+`;
+
+const Item = styled(Link)`
     font-size: ${(props) => props.theme.fontSizes.base};
     font-weight: 600;
     line-height: 140%;
-    padding: 0 2rem;
 `;
 
 const ButtonWrapper = styled.div`
@@ -80,29 +78,23 @@ const Navbar = () => {
                 <Title className={space.className}>GAME-SCOPE</Title>
             </LogoWrapper>
 
-            <NavWrapper>
-                <NavList>
-                    {navLinks.map((link) => (
-                        <NavItem
-                            key={link.title}
-                            href={link.url}
-                        >
-                            {link.title}
-                        </NavItem>
-                    ))}
-                    <ButtonWrapper>
-                        <Button
-                            fullwidth
-                            variant="primary"
-                            height="secondary"
-                            padding="secondary"
-                            preIcon={UserIcon}
-                        >
-                            Sign Up
-                        </Button>
-                    </ButtonWrapper>
-                </NavList>
-            </NavWrapper>
+            <NavList>
+                {navLinks.map((link) => (
+                    <NavItem key={link.title}>
+                        <Item href={link.url}>{link.title}</Item>
+                    </NavItem>
+                ))}
+                <ButtonWrapper>
+                    <Button
+                        fullwidth
+                        variant="primary"
+                        height="tertiary"
+                        preIcon={UserIcon}
+                    >
+                        Sign Up
+                    </Button>
+                </ButtonWrapper>
+            </NavList>
         </Container>
     );
 };

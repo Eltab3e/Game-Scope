@@ -7,10 +7,8 @@ import { space } from "@/app/layout";
 import Button from "@/components/shared/Button";
 
 const Container = styled.div`
-    color: ${(props) => props.theme.colors.white};
     display: flex;
     gap: 3rem;
-    padding: 8rem 19.5rem;
 `;
 
 const TextSection = styled.div`
@@ -42,7 +40,7 @@ const ButtonWrapper = styled.div`
 
 const Figures = styled.div`
     display: flex;
-    gap: 3rem;
+    gap: 6rem;
 `;
 
 const Items = styled.h4`
@@ -61,7 +59,6 @@ const ImageSection = styled.div`
     flex: 0.5;
     display: flex;
     flex-direction: column;
-    align-items: end;
     width: 51rem;
     height: 51rem;
 `;
@@ -69,7 +66,7 @@ const ImageSection = styled.div`
 const ImageWrapper = styled.div`
     position: relative;
     width: 51rem;
-    height: 40rem;
+    height: 41rem;
     border-radius: 2rem 2rem 0 0;
     overflow: hidden;
 `;
@@ -120,22 +117,17 @@ const Hero = () => {
         <Container>
             <TextSection>
                 <TitleWrapper>
-                    <Title>
-                        DISCOVER
-                        <br /> DIGITAL ART & <br />
-                        COLLECT NFTs
-                    </Title>
+                    <Title>DISCOVER DIGITAL ART & COLLECT NFTs</Title>
                     <SubTitle>
-                        NFT MARKETPLACE UI CREATD WITH ANIMA FOR FIGMA. <br /> COLLECT, BUY AND SELL
-                        ART FROM MORE <br /> THAN 20K NFT ARTISTS.
+                        NFT MARKETPLACE UI CREATD WITH ANIMA FOR FIGMA. COLLECT, BUY AND SELL ART
+                        FROM MORE THAN 20K NFT ARTISTS.
                     </SubTitle>
                 </TitleWrapper>
                 <ButtonWrapper>
                     <Button
-                        fullWidth
+                        fullwidth
                         variant="primary"
                         height="secondary"
-                        padding="primary"
                         preIcon={RocketIcon}
                     >
                         Get Started
