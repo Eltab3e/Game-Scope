@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 //essential
-import { test } from "@/constants";
+import { trending } from "@/constants";
 
 const Container = styled.div`
     display: flex;
@@ -89,7 +89,7 @@ const Trending = () => {
             </TextWrapper>
 
             <Gallery>
-                {test.map((item) => (
+                {trending.map((item) => (
                     <Card key={item.id}>
                         <MainImageWrapper>
                             <Image
@@ -100,7 +100,7 @@ const Trending = () => {
                         </MainImageWrapper>
 
                         <MiniCards>
-                            {test.map((item) => (
+                            {trending.map((item) => (
                                 <SubImageWrapper key={item.id}>
                                     <Image
                                         src={item.url}

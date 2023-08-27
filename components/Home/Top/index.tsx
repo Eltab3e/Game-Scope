@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 //essential
-import { cards } from "@/constants";
+import { top } from "@/constants";
 //components
 import Button from "@/components/shared/Button";
 
@@ -110,7 +110,7 @@ const Top = () => {
             </TextContainer>
 
             <Gallery>
-                {cards.map((card) => (
+                {top.map((card) => (
                     <Card key={card.id}>
                         <ImageWrapper>
                             <Image
