@@ -4,27 +4,34 @@ import styled from "styled-components";
 //components
 import Spinner from "../Spinner";
 
+interface ButtonProps {
+    children: ReactNode;
+    color?: string;
+    preIcon?: React.ElementType;
+    postIcon?: React.ElementType;
+    loading?: boolean;
+    fullWidth?: boolean;
+    onClick?: () => void;
+    variant?: "primary" | "outline";
+    padding?: "primary" | "secondary";
+    type?: "button" | "submit" | "reset";
+    height?: "primary" | "secondary" | "tertiary";
+}
+
 const StyledButton = styled.button<any>`
-    width: ${(props) => (props.fullwidth ? "100%" : "default")};
-    color: ${(props) => props.theme.colors.white};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    cursor: pointer;
+    gap: 1.2rem;
+    font-weight: 600;
+    line-height: 140%;
+    border-radius: 2rem;
+
     font-size: ${(props) => props.theme.fontSizes.base};
-    border: ${(props) => {
-        if (props.variant === "outline") {
-            return `1px solid ${props.theme.colors.purple}`;
-        } else {
-            return "none";
-        }
-    }};
-    background-color: ${(props) => {
-        switch (props.variant) {
-            case "primary":
-                return props.theme.colors.purple;
-            case "outline":
-                return props.theme.colors.secondaryBg;
-            default:
-                return "transparent";
-        }
-    }};
+    width: ${(props) => (props.fullWidth ? "100%" : "auto")};
+
     height: ${(props) => {
         switch (props.height) {
             case "primary":
@@ -37,15 +44,7 @@ const StyledButton = styled.button<any>`
                 return;
         }
     }};
-    svg {
-        color: ${(props) => {
-            if (props.variant === "primary") {
-                return props.theme.colors.white;
-            } else {
-                return props.theme.colors.purple;
-            }
-        }};
-    }
+
     padding: ${(props) => {
         switch (props.padding) {
             case "primary":
@@ -53,75 +52,70 @@ const StyledButton = styled.button<any>`
             case "secondary":
                 return "0 3rem";
             default:
-                return "0 2rem";
+                return;
         }
     }};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.2rem;
-    border-radius: 2rem;
-    font-weight: 600;
-    line-height: 140%;
-    white-space: nowrap;
-    cursor: pointer;
-`;
 
-const Button = ({
-    children,
-    variant,
-    height,
-    color,
-    padding,
-    postIcon,
-    preIcon,
-    type,
-    loading,
-    onClick,
-    fullwidth,
-    animate,
-}: {
-    children: ReactNode;
-    variant?: "primary" | "outline";
-    height?: "primary" | "secondary" | "tertiary";
-    color?: string;
-    padding?: "primary" | "secondary";
-    postIcon?: any;
-    preIcon?: any;
-    type?: "button" | "submit" | "reset" | undefined;
-    loading?: boolean;
-    onClick?: () => void;
-    fullwidth?: boolean;
-    animate?: boolean;
-}) => {
-    const PostIcon = postIcon;
-    const PreIcon = preIcon;
+    background-color: ${(props) => {
+        switch (props.variant) {
+            case "primary":
+                return props.theme.colors.purple;
+            case "outline":
+                return props.theme.colors.secondaryBg;
+            default:
+                return;
+        }
+    }};
 
-    const generateIconColor = (props: any) => {
+    color: ${(props) => {
         switch (props.variant) {
             case "primary":
                 return props.theme.colors.white;
             case "outline":
-                return props.theme.colors.pruple;
+                return props.theme.colors.purple;
             default:
-                return color;
+                return;
         }
-    };
+    }};
 
+    border: ${(props) => {
+        switch (props.variant) {
+            case "primary":
+                return "none";
+            case "outline":
+                return `1px solid ${props.theme.colors.purple}`;
+            default:
+                return;
+        }
+    }};
+`;
+
+const Button: React.FC<ButtonProps> = ({
+    children,
+    color,
+    preIcon: PreIcon,
+    postIcon: PostIcon,
+    loading,
+    fullWidth,
+    onClick,
+    variant,
+    padding,
+    type,
+    height,
+}: ButtonProps) => {
     return (
         <StyledButton
-            variant={variant}
-            height={height}
             color={color}
+            fullWidth={fullWidth}
+            onClick={onClick}
+            variant={variant}
             padding={padding}
             type={type}
-            onClick={onClick}
-            fullwidth={fullwidth}
-            animate={animate ? true : undefined}
+            height={height}
         >
-            {PreIcon && <PreIcon color={generateIconColor} />}
+            {PreIcon && <PreIcon />}
             {loading ? <Spinner /> : children}
-            {PostIcon && <PostIcon color={generateIconColor} />}
+            {PostIcon && <PostIcon />}
         </StyledButton>
     );
 };

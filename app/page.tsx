@@ -4,6 +4,7 @@ import styled from "styled-components";
 //components
 import Hero from "@/components/Home/Hero";
 import Trending from "@/components/Home/Trending";
+import Top from "@/components/Home/Top";
 
 const Container = styled.div`
     background-color: ${(props) => props.theme.colors.primaryBg};
@@ -16,6 +17,7 @@ export default function Home() {
         <Container>
             <Hero />
             <Trending />
+            <Top />
         </Container>
     );
 }

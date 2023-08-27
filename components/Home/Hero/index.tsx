@@ -132,7 +132,7 @@ const Hero = () => {
                 </TitleWrapper>
                 <ButtonWrapper>
                     <Button
-                        fullwidth
+                        fullWidth
                         variant="primary"
                         height="secondary"
                         padding="primary"
