@@ -1,4 +1,5 @@
 "use client";
+
 //required
 import "../styles/globals.css";
 import { Space_Mono, Work_Sans } from "next/font/google";

@@ -88,7 +88,7 @@ const Navbar = () => {
                     <Button
                         fullwidth
                         variant="primary"
-                        height="tertiary"
+                        height="secondary"
                         preIcon={UserIcon}
                     >
                         Sign Up

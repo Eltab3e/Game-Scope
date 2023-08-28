@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { space } from "@/app/layout";
 //components
 import Button from "@/components/shared/Button";
+import HightlightCard from "@/components/shared/Cards/HighlightCard";
 
 const Container = styled.div`
     display: flex;
@@ -35,7 +36,7 @@ const SubTitle = styled.p`
 `;
 
 const ButtonWrapper = styled.div`
-    width: 22.4rem;
+    width: 24.7rem;
 `;
 
 const Figures = styled.div`
@@ -52,54 +53,6 @@ const ItemWrapper = styled.div``;
 
 const Item = styled.h5`
     font-size: ${(props) => props.theme.fontSizes.h5};
-    font-weight: 400;
-`;
-
-const ImageSection = styled.div`
-    flex: 0.5;
-    display: flex;
-    flex-direction: column;
-    width: 51rem;
-    height: 51rem;
-`;
-
-const ImageWrapper = styled.div`
-    position: relative;
-    width: 51rem;
-    height: 41rem;
-    border-radius: 2rem 2rem 0 0;
-    overflow: hidden;
-`;
-
-const BottomCard = styled.div`
-    background-color: ${(props) => props.theme.colors.secondaryBg};
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 51rem;
-    padding: 2rem;
-    border-radius: 0 0 2rem 2rem;
-`;
-
-const Text = styled.h5`
-    font-size: ${(props) => props.theme.fontSizes.h5};
-    font-weight: 600;
-`;
-
-const SubText = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-`;
-
-const Avatar = styled.div`
-    position: relative;
-    width: 2.5rem;
-    height: 2.5rem;
-`;
-
-const Name = styled.p`
-    font-size: ${(props) => props.theme.fontSizes.base};
     font-weight: 400;
 `;
 
@@ -155,28 +108,7 @@ const Hero = () => {
                 </Figures>
             </TextSection>
 
-            <ImageSection>
-                <ImageWrapper>
-                    <Image
-                        src={"/images/placeholder.png"}
-                        alt="image"
-                        fill
-                    />
-                </ImageWrapper>
-                <BottomCard>
-                    <Text>Space Walking</Text>
-                    <SubText>
-                        <Avatar>
-                            <Image
-                                src={"/avatars/Avatar14.png"}
-                                alt="avatar"
-                                fill
-                            />
-                        </Avatar>
-                        <Name>Animakid</Name>
-                    </SubText>
-                </BottomCard>
-            </ImageSection>
+            <HightlightCard />
         </Container>
     );
 };

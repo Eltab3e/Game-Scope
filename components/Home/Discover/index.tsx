@@ -1,20 +1,19 @@
 //required
-import styled from "styled-components";
 import Image from "next/image";
+import styled from "styled-components";
 //essential
-import { top } from "@/constants";
+import { trending } from "@/constants";
 //components
 import Button from "@/components/shared/Button";
-import ArtistCard from "@/components/shared/Cards/ArtistCard";
+import NFTCard from "@/components/shared/Cards/NFTCard";
 
 const Container = styled.div`
-    color: ${(props) => props.theme.colors.white};
     display: flex;
     flex-direction: column;
     gap: 6rem;
 `;
 
-const TextContainer = styled.div`
+const HeadingContainer = styled.div`
     display: flex;
     justify-content: space-between;
 `;
@@ -25,69 +24,70 @@ const HeadingWrapper = styled.div`
     gap: 1rem;
 `;
 
-const Title = styled.h3`
+const Heading = styled.h3`
     font-size: ${(props) => props.theme.fontSizes.h3};
     font-weight: 600;
 `;
 
-const SubTitle = styled.p`
+const SubHeading = styled.p`
     font-size: ${(props) => props.theme.fontSizes.h5};
     font-weight: 400;
 `;
 
-const ButtonContainer = styled.div`
+const ButtonWrapper = styled.div`
+    align-self: flex-end;
     width: 24.7rem;
-    display: flex;
-    align-items: flex-end;
 `;
 
-const Gallery = styled.div`
+const Cards = styled.div`
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
 `;
 
-const Icon = () => (
+const EyeIcon = () => (
     <Image
-        src="/icons/RocketLaunch.svg"
-        alt="user"
+        src="/icons/Eye.svg"
+        alt="icon"
         width={20}
         height={20}
     />
 );
 
-const Top = () => {
+const Discover = () => {
     return (
         <Container>
-            <TextContainer>
+            <HeadingContainer>
                 <HeadingWrapper>
-                    <Title>Top Creators</Title>
-                    <SubTitle>Checkout Top Rated Creators On NFT Marketplace.</SubTitle>
+                    <Heading>Discover More NFTs</Heading>
+                    <SubHeading>Explore New Trending NFTs</SubHeading>
                 </HeadingWrapper>
-                <ButtonContainer>
+                <ButtonWrapper>
                     <Button
                         fullwidth
                         variant="outline"
                         height="secondary"
-                        preIcon={Icon}
+                        preIcon={EyeIcon}
                     >
-                        View Rankings
+                        Get Started
                     </Button>
-                </ButtonContainer>
-            </TextContainer>
+                </ButtonWrapper>
+            </HeadingContainer>
 
-            <Gallery>
-                {top.map((card) => (
-                    <ArtistCard
+            <Cards>
+                {trending.map((card) => (
+                    <NFTCard
                         key={card.id}
                         id={card.id}
                         title={card.title}
-                        url={card.url}
+                        name={card.name}
+                        imgUrl={card.imgUrl}
+                        avatarUrl={card.avatarUrl}
                     />
                 ))}
-            </Gallery>
+            </Cards>
         </Container>
     );
 };
 
-export default Top;
+export default Discover;

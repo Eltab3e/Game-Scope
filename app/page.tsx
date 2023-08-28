@@ -7,6 +7,7 @@ import Hero from "@/components/Home/Hero";
 import Trending from "@/components/Home/Trending";
 import Top from "@/components/Home/Top";
 import Category from "@/components/Home/Category";
+import Discover from "@/components/Home/Discover";
 
 export default function Home() {
     return (
@@ -15,6 +16,7 @@ export default function Home() {
             <Trending />
             <Top />
             <Category />
+            <Discover />
         </Wrapper>
     );
 }
