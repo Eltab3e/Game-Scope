@@ -6,6 +6,7 @@ import { trending } from "@/constants";
 //components
 import Button from "@/components/shared/Button";
 import NFTCard from "@/components/shared/Cards/NFTCard";
+import Heading from "@/components/shared/Heading";
 
 const Container = styled.div`
     display: flex;
@@ -16,22 +17,6 @@ const Container = styled.div`
 const HeadingContainer = styled.div`
     display: flex;
     justify-content: space-between;
-`;
-
-const HeadingWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-`;
-
-const Heading = styled.h3`
-    font-size: ${(props) => props.theme.fontSizes.h3};
-    font-weight: 600;
-`;
-
-const SubHeading = styled.p`
-    font-size: ${(props) => props.theme.fontSizes.h5};
-    font-weight: 400;
 `;
 
 const ButtonWrapper = styled.div`
@@ -58,10 +43,11 @@ const Discover = () => {
     return (
         <Container>
             <HeadingContainer>
-                <HeadingWrapper>
-                    <Heading>Discover More NFTs</Heading>
-                    <SubHeading>Explore New Trending NFTs</SubHeading>
-                </HeadingWrapper>
+                <Heading
+                    main="Discover More NFTs"
+                    sub="Explore New Trending NFTs."
+                ></Heading>
+
                 <ButtonWrapper>
                     <Button
                         fullwidth

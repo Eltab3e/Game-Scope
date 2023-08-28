@@ -17,7 +17,7 @@ interface ButtonProps {
     height?: "primary" | "secondary" | "tertiary";
 }
 
-const StyledButton = styled.button<any>`
+const StyledButton = styled.button<ButtonProps>`
     display: flex;
     align-items: center;
     justify-content: center;

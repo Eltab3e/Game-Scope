@@ -56,6 +56,7 @@ const HightlightCard = () => {
                     src={"/images/placeholder.png"}
                     alt="placeholder"
                     fill
+                    priority
                 />
             </ImageWrapper>
             <TextWrapper>

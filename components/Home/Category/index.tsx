@@ -4,16 +4,12 @@ import styled from "styled-components";
 import { categories } from "@/constants";
 //components
 import CategoryCard from "@/components/shared/Cards/CategoryCard";
+import Heading from "@/components/shared/Heading";
 
 const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 6rem;
-`;
-
-const Heading = styled.h3`
-    font-size: ${(props) => props.theme.fontSizes.h3};
-    font-weight: 600;
 `;
 
 const Cards = styled.div`
@@ -25,7 +21,7 @@ const Cards = styled.div`
 const Category = () => {
     return (
         <Container>
-            <Heading>Browse Categories</Heading>
+            <Heading main="Browse Category" />
 
             <Cards>
                 {categories.slice(0, 8).map((category) => (

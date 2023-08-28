@@ -6,6 +6,7 @@ import { space } from "@/app/layout";
 //components
 import Button from "@/components/shared/Button";
 import HightlightCard from "@/components/shared/Cards/HighlightCard";
+import Heading from "@/components/shared/Heading";
 
 const Container = styled.div`
     display: flex;
@@ -17,22 +18,6 @@ const TextSection = styled.div`
     display: flex;
     flex-direction: column;
     gap: 4rem;
-`;
-
-const TitleWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-`;
-
-const Title = styled.h1`
-    font-size: ${(props) => props.theme.fontSizes.h1};
-    font-weight: 600;
-`;
-
-const SubTitle = styled.p`
-    font-size: ${(props) => props.theme.fontSizes.h5};
-    font-weight: 400;
 `;
 
 const ButtonWrapper = styled.div`
@@ -69,13 +54,13 @@ const Hero = () => {
     return (
         <Container>
             <TextSection>
-                <TitleWrapper>
-                    <Title>DISCOVER DIGITAL ART & COLLECT NFTs</Title>
-                    <SubTitle>
-                        NFT MARKETPLACE UI CREATD WITH ANIMA FOR FIGMA. COLLECT, BUY AND SELL ART
-                        FROM MORE THAN 20K NFT ARTISTS.
-                    </SubTitle>
-                </TitleWrapper>
+                <Heading
+                    main="DISCOVER DIGITAL ART & COLLECT NFTs"
+                    sub="NFT MARKETPLACE UI CREATD WITH ANIMA FOR FIGMA. COLLECT, BUY AND SELL ART
+                        FROM MORE THAN 20K NFT ARTISTS."
+                    large
+                />
+
                 <ButtonWrapper>
                     <Button
                         fullwidth

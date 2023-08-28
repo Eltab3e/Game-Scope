@@ -4,27 +4,12 @@ import styled from "styled-components";
 import { trending } from "@/constants";
 //components
 import CollectionCard from "@/components/shared/Cards/CollectionCard";
+import Heading from "@/components/shared/Heading";
 
 const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 6rem;
-`;
-
-const TextWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-`;
-
-const Title = styled.h3`
-    font-size: ${(props) => props.theme.fontSizes.h3};
-    font-weight: 600;
-`;
-
-const SubTitle = styled.p`
-    font-size: ${(props) => props.theme.fontSizes.h5};
-    font-weight: 400;
 `;
 
 const Gallery = styled.div`
@@ -36,10 +21,10 @@ const Gallery = styled.div`
 const Trending = () => {
     return (
         <Container>
-            <TextWrapper>
-                <Title>Trending Games</Title>
-                <SubTitle>Checkout Our Weekly Updated Trending Collection.</SubTitle>
-            </TextWrapper>
+            <Heading
+                main="Trending Games"
+                sub="Checkout Our Weekly Updated Trending Collection."
+            />
 
             <Gallery>
                 {trending.map((item) => (

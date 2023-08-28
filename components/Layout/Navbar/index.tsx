@@ -34,6 +34,11 @@ const Title = styled.h4`
     font-weight: 400;
 `;
 
+const NavWrapper = styled.div`
+    display: flex;
+    gap: 1.5rem;
+`;
+
 const NavList = styled.ul`
     display: flex;
     align-items: center;
@@ -41,7 +46,7 @@ const NavList = styled.ul`
     gap: 1.5rem;
 `;
 
-const NavItem = styled.div`
+const NavItem = styled.li`
     padding: 0 3rem;
 `;
 
@@ -77,13 +82,14 @@ const Navbar = () => {
                 </Logo>
                 <Title className={space.className}>GAME-SCOPE</Title>
             </LogoWrapper>
-
-            <NavList>
-                {navLinks.map((link) => (
-                    <NavItem key={link.title}>
-                        <Item href={link.url}>{link.title}</Item>
-                    </NavItem>
-                ))}
+            <NavWrapper>
+                <NavList>
+                    {navLinks.map((link) => (
+                        <NavItem key={link.title}>
+                            <Item href={link.url}>{link.title}</Item>
+                        </NavItem>
+                    ))}
+                </NavList>
                 <ButtonWrapper>
                     <Button
                         fullwidth
@@ -94,7 +100,7 @@ const Navbar = () => {
                         Sign Up
                     </Button>
                 </ButtonWrapper>
-            </NavList>
+            </NavWrapper>
         </Container>
     );
 };
