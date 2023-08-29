@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 interface HeadingProps {
-    main: string;
+    main?: string;
     sub?: string;
     large?: boolean;
 }

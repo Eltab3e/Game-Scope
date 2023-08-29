@@ -20,22 +20,6 @@ const TextContainer = styled.div`
     justify-content: space-between;
 `;
 
-// const HeadingWrapper = styled.div`
-//     display: flex;
-//     flex-direction: column;
-//     gap: 1rem;
-// `;
-
-// const Title = styled.h3`
-//     font-size: ${(props) => props.theme.fontSizes.h3};
-//     font-weight: 600;
-// `;
-
-// const SubTitle = styled.p`
-//     font-size: ${(props) => props.theme.fontSizes.h5};
-//     font-weight: 400;
-// `;
-
 const ButtonContainer = styled.div`
     width: 24.7rem;
     display: flex;
