@@ -69,6 +69,7 @@ const Top = () => {
                         id={card.id}
                         title={card.title}
                         url={card.url}
+                        total={card.total}
                     />
                 ))}
             </Gallery>

@@ -1,6 +1,8 @@
+//required
 import styled from "styled-components";
-import Heading from "../../Heading";
 import Image from "next/image";
+//components
+import Heading from "../../Heading";
 
 const Container = styled.div`
     background-color: ${(props) => props.theme.colors.secondaryBg};
@@ -32,22 +34,32 @@ const Text = styled.p`
     line-height: 140%;
 `;
 
-const AboutCard = () => {
+const AboutCard = ({
+    key,
+    imgUrl,
+    title,
+    text,
+}: {
+    key: number;
+    imgUrl: string;
+    title: string;
+    text: string;
+}) => {
     return (
         <Container>
             <ImageWrapper>
                 <Image
-                    src={"/images/1.png"}
-                    alt="image"
+                    src={imgUrl}
+                    alt={title}
                     fill
                 />
             </ImageWrapper>
             <TextWrapper>
-                <Heading sub="Setup Your Wallet" />
-                <Text>
-                    Set up your wallet of choice. Connect it to the NFT market by clicking the
-                    wallet icon in the top right corner.
-                </Text>
+                <Heading
+                    sub={title}
+                    bold
+                />
+                <Text>{text}</Text>
             </TextWrapper>
         </Container>
     );

@@ -64,7 +64,17 @@ const Ranking = styled.div`
     border-radius: 50%;
 `;
 
-const ArtistCard = ({ id, title, url }: { id: number; title: string; url: string }) => {
+const ArtistCard = ({
+    id,
+    title,
+    url,
+    total,
+}: {
+    id: number;
+    title: string;
+    url: string;
+    total: string;
+}) => {
     return (
         <Container>
             <Ranking>
@@ -81,7 +91,7 @@ const ArtistCard = ({ id, title, url }: { id: number; title: string; url: string
                 <Title>{title}</Title>
                 <Info>
                     <LightText>Total Sales:</LightText>
-                    <Text className={space.className}>36.04 ETH</Text>
+                    <Text className={space.className}>{total}</Text>
                 </Info>
             </TextWrapper>
         </Container>

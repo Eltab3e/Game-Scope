@@ -4,9 +4,9 @@ import styled from "styled-components";
 //essential
 import { space } from "@/app/layout";
 //components
+import Heading from "@/components/shared/Heading";
 import Button from "@/components/shared/Button";
 import HightlightCard from "@/components/shared/Cards/HighlightCard";
-import Heading from "@/components/shared/Heading";
 
 const Container = styled.div`
     display: flex;

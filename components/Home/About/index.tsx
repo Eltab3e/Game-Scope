@@ -1,4 +1,8 @@
+//required
 import styled from "styled-components";
+//essential
+import { about } from "@/constants";
+//components
 import Heading from "@/components/shared/Heading";
 import AboutCard from "@/components/shared/Cards/AboutCard";
 
@@ -23,9 +27,14 @@ const About = () => {
             />
 
             <Cards>
-                <AboutCard />
-                <AboutCard />
-                <AboutCard />
+                {about.map((card) => (
+                    <AboutCard
+                        key={card.id}
+                        imgUrl={card.imgUrl}
+                        title={card.title}
+                        text={card.text}
+                    />
+                ))}
             </Cards>
         </Container>
     );

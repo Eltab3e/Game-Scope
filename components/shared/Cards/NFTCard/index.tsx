@@ -89,12 +89,16 @@ const NFTCard = ({
     name,
     imgUrl,
     avatarUrl,
+    price,
+    bid,
 }: {
     id: number;
     title: string;
     name: string;
     imgUrl: string;
     avatarUrl: string;
+    price: string;
+    bid: string;
 }) => {
     return (
         <Container>
@@ -124,11 +128,11 @@ const NFTCard = ({
                 <AdditionalInfo>
                     <Price>
                         <Text className={space.className}>Price</Text>
-                        <Number className={space.className}>33.01 ETH</Number>
+                        <Number className={space.className}>{price}</Number>
                     </Price>
                     <Bid>
                         <Text className={space.className}>Highest Bid</Text>
-                        <Number className={space.className}>5.18 ETH</Number>
+                        <Number className={space.className}>{bid}</Number>
                     </Bid>
                 </AdditionalInfo>
             </TextWrapper>

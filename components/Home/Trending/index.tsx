@@ -3,8 +3,8 @@ import styled from "styled-components";
 //essential
 import { trending } from "@/constants";
 //components
-import CollectionCard from "@/components/shared/Cards/CollectionCard";
 import Heading from "@/components/shared/Heading";
+import CollectionCard from "@/components/shared/Cards/CollectionCard";
 
 const Container = styled.div`
     display: flex;

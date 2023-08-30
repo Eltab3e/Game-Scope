@@ -2,7 +2,7 @@
 import Image from "next/image";
 import styled from "styled-components";
 //essential
-import { trending } from "@/constants";
+import { discover } from "@/constants";
 //components
 import Button from "@/components/shared/Button";
 import NFTCard from "@/components/shared/Cards/NFTCard";
@@ -61,7 +61,7 @@ const Discover = () => {
             </HeadingContainer>
 
             <Cards>
-                {trending.map((card) => (
+                {discover.map((card) => (
                     <NFTCard
                         key={card.id}
                         id={card.id}
@@ -69,6 +69,8 @@ const Discover = () => {
                         name={card.name}
                         imgUrl={card.imgUrl}
                         avatarUrl={card.avatarUrl}
+                        price={card.price}
+                        bid={card.bid}
                     />
                 ))}
             </Cards>
