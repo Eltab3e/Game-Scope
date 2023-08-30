@@ -23,6 +23,10 @@ export const work = Work_Sans({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
+            <head>
+                <title>Game-Scope</title>
+                <meta content="Your Ultimate Gaming Hub." />
+            </head>
             <body className={work.className}>
                 <StyledComponentsRegistry>
                     <ThemeProvider theme={theme}>
