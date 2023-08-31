@@ -10,6 +10,7 @@ import Category from "@/components/Home/Category";
 import Discover from "@/components/Home/Discover";
 import Highlight from "@/components/Home/Highlight";
 import About from "@/components/Home/About";
+import Subscribe from "@/components/Home/Subscribe";
 
 export default function Home() {
     return (
@@ -24,6 +25,7 @@ export default function Home() {
             <Highlight />
             <Wrapper>
                 <About />
+                <Subscribe />
             </Wrapper>
         </>
     );
