@@ -66,24 +66,16 @@ const Name = styled.p`
     line-height: 140%;
 `;
 
-const Rating = styled.p`
-    font-size: ${(props) => props.theme.fontSizes.base};
-    font-weight: 400;
-    line-height: 140%;
-`;
-
 const CollectionCard = ({
     key,
     name,
-    released,
     background_image,
-    rating,
+    screenshots,
 }: {
     key: number;
     name: string;
-    released: string;
     background_image: string;
-    rating: number;
+    screenshots: any;
 }) => {
     return (
         <Container>
@@ -130,7 +122,6 @@ const CollectionCard = ({
                         />
                     </Avatar>
                     <Name>{name}</Name>
-                    <Rating>Rating: {rating}</Rating>
                 </Info>
             </TextWrapper>
         </Container>

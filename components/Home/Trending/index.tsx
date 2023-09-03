@@ -22,6 +22,7 @@ const Trending = () => {
     const { data, isLoading, error, isError } = useFetchAllGames();
 
     const games = data?.results;
+    const screenshots = data?.results.map((item: any) => item.short_screenshots);
 
     return (
         <Container>
@@ -38,9 +39,8 @@ const Trending = () => {
                         <CollectionCard
                             key={item.id}
                             name={item.name}
-                            released={item.released}
                             background_image={item.background_image}
-                            rating={item.rating}
+                            screenshots={screenshots}
                         />
                     ))
                 )}
