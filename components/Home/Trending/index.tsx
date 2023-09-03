@@ -1,7 +1,7 @@
 //required
 import styled from "styled-components";
 //essential
-import { trending } from "@/constants";
+import { useFetchAllGames } from "@/shared/hooks/games/useFetchAllGames";
 //components
 import Heading from "@/components/shared/Heading";
 import CollectionCard from "@/components/shared/Cards/CollectionCard";
@@ -19,6 +19,10 @@ const Gallery = styled.div`
 `;
 
 const Trending = () => {
+    const { data, isLoading, error, isError } = useFetchAllGames();
+
+    const games = data?.results;
+
     return (
         <Container>
             <Heading
@@ -27,15 +31,19 @@ const Trending = () => {
             />
 
             <Gallery>
-                {trending.map((item) => (
-                    <CollectionCard
-                        key={item.id}
-                        id={item.id}
-                        title={item.title}
-                        name={item.name}
-                        imgUrl={item.imgUrl}
-                    />
-                ))}
+                {isLoading ? (
+                    <h1>Loading</h1>
+                ) : (
+                    games.map((item: any) => (
+                        <CollectionCard
+                            key={item.id}
+                            name={item.name}
+                            released={item.released}
+                            background_image={item.background_image}
+                            rating={item.rating}
+                        />
+                    ))
+                )}
             </Gallery>
         </Container>
     );

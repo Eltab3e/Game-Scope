@@ -66,62 +66,71 @@ const Name = styled.p`
     line-height: 140%;
 `;
 
+const Rating = styled.p`
+    font-size: ${(props) => props.theme.fontSizes.base};
+    font-weight: 400;
+    line-height: 140%;
+`;
+
 const CollectionCard = ({
-    id,
-    title,
+    key,
     name,
-    imgUrl,
+    released,
+    background_image,
+    rating,
 }: {
-    id: number;
-    title: string;
+    key: number;
     name: string;
-    imgUrl: string;
+    released: string;
+    background_image: string;
+    rating: number;
 }) => {
     return (
         <Container>
             <ImagesWrapper>
                 <MainImageWrapper>
                     <Image
-                        src={imgUrl}
-                        alt={title}
+                        src={background_image}
+                        alt={name}
                         fill
                     />
                 </MainImageWrapper>
                 <SubImagesWrapper>
                     <SubImage>
                         <Image
-                            src={imgUrl}
-                            alt={title}
+                            src={background_image}
+                            alt={name}
                             fill
                         />
                     </SubImage>
                     <SubImage>
                         <Image
-                            src={imgUrl}
-                            alt={title}
+                            src={background_image}
+                            alt={name}
                             fill
                         />
                     </SubImage>
                     <SubImage>
                         <Image
-                            src={imgUrl}
-                            alt={title}
+                            src={background_image}
+                            alt={name}
                             fill
                         />
                     </SubImage>
                 </SubImagesWrapper>
             </ImagesWrapper>
             <TextWrapper>
-                <Title>{title}</Title>
+                <Title>{name}</Title>
                 <Info>
                     <Avatar>
                         <Image
-                            src={imgUrl}
-                            alt={title}
+                            src={background_image}
+                            alt={name}
                             fill
                         />
                     </Avatar>
                     <Name>{name}</Name>
+                    <Rating>Rating: {rating}</Rating>
                 </Info>
             </TextWrapper>
         </Container>
