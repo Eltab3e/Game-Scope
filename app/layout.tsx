@@ -4,6 +4,8 @@
 import "../styles/globals.css";
 import { Space_Mono, Work_Sans } from "next/font/google";
 import { ThemeProvider } from "styled-components";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 //essential
 import theme from "@/theme";
 import StyledComponentsRegistry from "@/lib/registry";
@@ -20,21 +22,26 @@ export const work = Work_Sans({
     subsets: ["latin"],
 });
 
+const queryClient = new QueryClient();
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en">
-            <head>
-                <title>Game-Scope</title>
-                <meta content="Your Ultimate Gaming Hub." />
-            </head>
-            <body className={work.className}>
-                <StyledComponentsRegistry>
-                    <ThemeProvider theme={theme}>
-                        <Navbar />
-                        {children}
-                    </ThemeProvider>
-                </StyledComponentsRegistry>
-            </body>
-        </html>
+        <QueryClientProvider client={queryClient}>
+            <html lang="en">
+                <head>
+                    <title>Game-Scope</title>
+                    <meta content="Your Ultimate Gaming Hub." />
+                </head>
+                <body className={work.className}>
+                    <StyledComponentsRegistry>
+                        <ThemeProvider theme={theme}>
+                            <Navbar />
+                            {children}
+                        </ThemeProvider>
+                    </StyledComponentsRegistry>
+                </body>
+                <ReactQueryDevtools />
+            </html>
+        </QueryClientProvider>
     );
 }
