@@ -12,6 +12,7 @@ interface ButtonProps {
     loading?: boolean;
     fullwidth?: boolean;
     onClick?: () => void;
+    padding?: "primary" | "default";
     variant?: "primary" | "outline";
     type?: "button" | "submit" | "reset";
     height?: "primary" | "secondary" | "tertiary";
@@ -76,6 +77,15 @@ const StyledButton = styled.button<ButtonProps>`
                 return;
         }
     }};
+
+    padding: ${(props) => {
+        switch (props.padding) {
+            case "primary":
+                return "0 5rem";
+            default:
+                return;
+        }
+    }};
 `;
 
 const Button: React.FC<ButtonProps> = ({
@@ -89,6 +99,7 @@ const Button: React.FC<ButtonProps> = ({
     variant,
     type,
     height,
+    padding,
 }: ButtonProps) => {
     return (
         <StyledButton
@@ -98,6 +109,7 @@ const Button: React.FC<ButtonProps> = ({
             variant={variant}
             type={type}
             height={height}
+            padding={padding}
         >
             {PreIcon && <PreIcon />}
             {loading ? <Spinner /> : children}
