@@ -1,7 +1,9 @@
-import Button from "@/components/shared/Button";
-import Heading from "@/components/shared/Heading";
+//required
 import Image from "next/image";
 import styled from "styled-components";
+//components
+import Button from "@/components/shared/Button";
+import Heading from "@/components/shared/Heading";
 
 const Container = styled.div``;
 

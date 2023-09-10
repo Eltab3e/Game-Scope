@@ -11,6 +11,7 @@ import Discover from "@/components/Home/Discover";
 import Highlight from "@/components/Home/Highlight";
 import About from "@/components/Home/About";
 import Subscribe from "@/components/Home/Subscribe";
+import Footer from "@/components/Home/Footer";
 
 export default function Home() {
     return (
@@ -26,6 +27,7 @@ export default function Home() {
             <Wrapper>
                 <About />
                 <Subscribe />
+                <Footer />
             </Wrapper>
         </>
     );
