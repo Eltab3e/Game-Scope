@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 //essential
+import { useFetchCreators } from "@/shared/hooks/creators/useFetchCreators";
 import { top } from "@/constants";
 //components
 import Button from "@/components/shared/Button";
@@ -42,6 +43,10 @@ const Icon = () => (
 );
 
 const Top = () => {
+    const { data, isLoading, error, isError } = useFetchCreators();
+    console.log("creators", data);
+    const developers = data?.results;
+
     return (
         <Container>
             <TextContainer>
@@ -63,15 +68,18 @@ const Top = () => {
             </TextContainer>
 
             <Gallery>
-                {top.map((card) => (
-                    <ArtistCard
-                        key={card.id}
-                        id={card.id}
-                        title={card.title}
-                        url={card.url}
-                        total={card.total}
-                    />
-                ))}
+                {isLoading ? (
+                    <h1>Loading</h1>
+                ) : (
+                    developers.map((developer: any) => (
+                        <ArtistCard
+                            key={developer.id}
+                            name={developer.name}
+                            count={developer.games_count}
+                            image={developer.image_background}
+                        />
+                    ))
+                )}
             </Gallery>
         </Container>
     );

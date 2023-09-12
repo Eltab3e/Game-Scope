@@ -25,6 +25,7 @@ const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     gap: 1rem;
 `;
 
@@ -65,33 +66,34 @@ const Ranking = styled.div`
 `;
 
 const ArtistCard = ({
-    id,
-    title,
-    url,
-    total,
+    key,
+    name,
+    image,
+    count,
 }: {
-    id: number;
-    title: string;
-    url: string;
-    total: string;
+    key: number;
+    name: string;
+    image: string;
+    count: string;
 }) => {
     return (
         <Container>
             <Ranking>
-                <LightText className={space.className}>{id}</LightText>
+                <LightText className={space.className}>{key}</LightText>
             </Ranking>
             <Avatar>
                 <Image
-                    src={url}
-                    alt={title}
+                    src={image}
+                    alt={name}
                     fill
+                    style={{ borderRadius: "50%" }}
                 />
             </Avatar>
             <TextWrapper>
-                <Title>{title}</Title>
+                <Title>{name}</Title>
                 <Info>
-                    <LightText>Total Sales:</LightText>
-                    <Text className={space.className}>{total}</Text>
+                    <LightText>No. of Games:</LightText>
+                    <Text className={space.className}>{count}</Text>
                 </Info>
             </TextWrapper>
         </Container>
