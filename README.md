@@ -10,18 +10,10 @@
 
 <h3 align="left">Languages and Tools:</h3>
 <p align="left"> 
-   <a href="https://nextjs.org/" target="_blank" rel="noreferrer">
-      <img src="https://cdn.worldvectorlogo.com/logos/nextjs-2.svg" alt="nextjs" width="40" height="40"/> 
-   </a> 
-   <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer">
-     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/>
-   </a>
-   <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/>
-   </a>
-   <a href="https://www.figma.com/" target="_blank" rel="noreferrer">
-      <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/>
-   </a> 
+   <img src="https://img.shields.io/badge/-Next.js-000000?logo=next.js&logoColor=white&labelColor=#000000" height="30" />
+   <img src="https://img.shields.io/badge/-TypeScript-007ACC?logo=typescript&logoColor=black&labelColor=#007ACC" height="30" />
+   <img src="https://img.shields.io/badge/-React_Query-FF4154?logo=react-query&logoColor=black&labelColor=#FF4154" height="30" />
+   <img src="https://img.shields.io/badge/-Styled_Components-DB7093?logo=styled-components&logoColor=black&labelColor=#DB7093" height="30" />
 </p>
 
 ## Getting Started
