@@ -67,15 +67,13 @@ const Name = styled.p`
 `;
 
 const CollectionCard = ({
-    key,
     name,
     background_image,
     screenshots,
 }: {
-    key: number;
     name: string;
     background_image: string;
-    screenshots: any;
+    screenshots: string[];
 }) => {
     return (
         <Container>
@@ -88,29 +86,18 @@ const CollectionCard = ({
                     />
                 </MainImageWrapper>
                 <SubImagesWrapper>
-                    <SubImage>
-                        <Image
-                            src={background_image}
-                            alt={name}
-                            fill
-                        />
-                    </SubImage>
-                    <SubImage>
-                        <Image
-                            src={background_image}
-                            alt={name}
-                            fill
-                        />
-                    </SubImage>
-                    <SubImage>
-                        <Image
-                            src={background_image}
-                            alt={name}
-                            fill
-                        />
-                    </SubImage>
+                    {screenshots.map((screenshot, index) => (
+                        <SubImage key={index}>
+                            <Image
+                                src={screenshot}
+                                alt={`${name} Screenshot ${index}`}
+                                fill
+                            />
+                        </SubImage>
+                    ))}
                 </SubImagesWrapper>
             </ImagesWrapper>
+
             <TextWrapper>
                 <Title>{name}</Title>
                 <Info>
