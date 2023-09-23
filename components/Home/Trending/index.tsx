@@ -2,6 +2,8 @@
 import styled from "styled-components";
 //essential
 import { useFetchAllGames } from "@/shared/hooks/games/useFetchAllGames";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 //components
 import Heading from "@/components/shared/Heading";
 import CollectionCard from "@/components/shared/Cards/CollectionCard";
@@ -32,7 +34,11 @@ const Trending = () => {
 
             <Gallery>
                 {isLoading ? (
-                    <h1>Loading</h1>
+                    <Skeleton
+                        count={3}
+                        height={40}
+                        style={{ marginTop: "30px" }}
+                    />
                 ) : (
                     games.map((item: any) => {
                         const screenshots = item.short_screenshots

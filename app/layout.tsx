@@ -9,6 +9,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 //essential
 import theme from "@/theme";
 import StyledComponentsRegistry from "@/lib/registry";
+import { SkeletonTheme } from "react-loading-skeleton";
 //components
 import Navbar from "@/components/Layout/Navbar";
 
@@ -35,8 +36,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <body className={work.className}>
                     <StyledComponentsRegistry>
                         <ThemeProvider theme={theme}>
-                            <Navbar />
-                            {children}
+                            <SkeletonTheme
+                                baseColor="#313131"
+                                highlightColor="#525252"
+                            >
+                                <Navbar />
+                                {children}
+                            </SkeletonTheme>
                         </ThemeProvider>
                     </StyledComponentsRegistry>
                 </body>
