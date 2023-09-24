@@ -33,35 +33,37 @@ const Title = styled.h5`
 `;
 
 const CategoryCard = ({
-    id,
-    title,
-    imgUrl,
+    key,
+    name,
+    image_background,
     iconUrl,
 }: {
-    id: number;
-    title: string;
-    imgUrl: string;
-    iconUrl: string;
+    key: number;
+    name: string;
+    image_background: string;
+    iconUrl: string | null;
 }) => {
     return (
         <Container>
             <ImageWrapper>
                 <Image
-                    src={imgUrl}
-                    alt={title}
+                    src={image_background}
+                    alt={name}
                     fill
                     style={{ filter: "blur(10px)" }}
                 />
                 <IconWrapper>
-                    <Image
-                        src={iconUrl}
-                        alt={title}
-                        fill
-                    />
+                    {iconUrl && (
+                        <Image
+                            src={iconUrl}
+                            alt={name}
+                            fill
+                        />
+                    )}
                 </IconWrapper>
             </ImageWrapper>
             <TextWrapper>
-                <Title>{title}</Title>
+                <Title>{name}</Title>
             </TextWrapper>
         </Container>
     );

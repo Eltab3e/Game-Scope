@@ -28,53 +28,37 @@ export const trending = [
     },
 ];
 
-export const categories = [
+export const categoryIcons = [
     {
-        id: 1,
-        title: "Art",
-        imgUrl: "/images/placeholder1.png",
+        index: 1,
         iconUrl: "/categories/art.svg",
     },
     {
-        id: 2,
-        title: "Collectibles",
-        imgUrl: "/images/placeholder2.png",
+        index: 2,
         iconUrl: "/categories/collectibles.svg",
     },
     {
-        id: 3,
-        title: "Music",
-        imgUrl: "/images/placeholder3.png",
+        index: 3,
         iconUrl: "/categories/music.svg",
     },
     {
-        id: 4,
-        title: "Photography",
-        imgUrl: "/images/placeholder4.png",
+        index: 4,
         iconUrl: "/categories/photography.svg",
     },
     {
-        id: 5,
-        title: "Video",
-        imgUrl: "/images/placeholder5.png",
+        index: 5,
         iconUrl: "/categories/video.svg",
     },
     {
-        id: 6,
-        title: "Utility",
-        imgUrl: "/images/placeholder6.png",
+        index: 6,
         iconUrl: "/categories/utility.svg",
     },
     {
-        id: 7,
-        title: "Sport",
-        imgUrl: "/images/placeholder7.png",
+        index: 7,
         iconUrl: "/categories/sport.svg",
     },
     {
-        id: 8,
-        title: "Virtual",
-        imgUrl: "/images/placeholder8.png",
+        index: 8,
         iconUrl: "/categories/virtual.svg",
     },
 ];
