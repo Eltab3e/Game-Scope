@@ -48,19 +48,27 @@ const Name = styled.p`
     line-height: 140%;
 `;
 
-const HightlightCard = () => {
+const HightlightCard = ({
+    name,
+    background_image,
+    publishers,
+}: {
+    name: string;
+    background_image: string;
+    publishers: any;
+}) => {
     return (
         <Container>
             <ImageWrapper>
                 <Image
-                    src={"/images/placeholder.png"}
-                    alt="placeholder"
+                    src={background_image}
+                    alt={name}
                     fill
                     priority
                 />
             </ImageWrapper>
             <TextWrapper>
-                <Title>Space Walking</Title>
+                <Title>{name}</Title>
                 <Info>
                     <Avatar>
                         <Image
@@ -69,7 +77,7 @@ const HightlightCard = () => {
                             fill
                         />
                     </Avatar>
-                    <Name>Animakid</Name>
+                    <Name>{publishers}</Name>
                 </Info>
             </TextWrapper>
         </Container>

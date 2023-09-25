@@ -3,6 +3,9 @@ import Image from "next/image";
 import styled from "styled-components";
 //essential
 import { space } from "@/app/layout";
+import { useFetchGameById } from "@/shared/hooks/games/useFetchGameById";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 //components
 import Heading from "@/components/shared/Heading";
 import Button from "@/components/shared/Button";
@@ -51,13 +54,16 @@ const RocketIcon = () => (
 );
 
 const Hero = () => {
+    const { data, isLoading, error, isError } = useFetchGameById(58175);
+
+    const { name, background_image, publishers } = data || {};
+
     return (
         <Container>
             <TextSection>
                 <Heading
                     main="DISCOVER DIGITAL ART & COLLECT NFTs"
-                    sub="NFT MARKETPLACE UI CREATD WITH ANIMA FOR FIGMA. COLLECT, BUY AND SELL ART
-                        FROM MORE THAN 20K NFT ARTISTS."
+                    sub="NFT MARKETPLACE UI CREATED WITH ANIMA FOR FIGMA. COLLECT, BUY, AND SELL ART FROM MORE THAN 20K NFT ARTISTS."
                     large
                 />
 
@@ -93,7 +99,18 @@ const Hero = () => {
                 </Figures>
             </TextSection>
 
-            <HightlightCard />
+            {isLoading ? (
+                <Skeleton
+                    count={1}
+                    height={140}
+                />
+            ) : (
+                <HightlightCard
+                    name={name}
+                    background_image={background_image}
+                    publishers={publishers?.map((item: any) => item.name).join(", ")}
+                />
+            )}
         </Container>
     );
 };
