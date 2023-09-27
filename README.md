@@ -1,5 +1,5 @@
 <h1 align="center">Welcome to Game-Scope 👋</h1>
-<h3 align="center">The ultimate NFT gaming hub.</h3>
+<h3 align="center">The ultimate gaming hub.</h3>
 
 <h3 align="left">Screenshots:</h3>
 <img src="https://drive.google.com/uc?id=1TK0VB_yXp7gnX_OrSEenMPCyDTYTeCRS" alt="image1" width="900"> 
