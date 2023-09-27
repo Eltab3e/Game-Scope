@@ -51,11 +51,11 @@ const Name = styled.p`
 const HightlightCard = ({
     name,
     background_image,
-    publishers,
+    platforms,
 }: {
     name: string;
     background_image: string;
-    publishers: any;
+    platforms: any;
 }) => {
     return (
         <Container>
@@ -72,12 +72,12 @@ const HightlightCard = ({
                 <Info>
                     <Avatar>
                         <Image
-                            src={"/avatars/avatar1.png"}
+                            src={"/icons/List.svg"}
                             alt="avatar"
                             fill
                         />
                     </Avatar>
-                    <Name>{publishers}</Name>
+                    <Name>{platforms}.</Name>
                 </Info>
             </TextWrapper>
         </Container>

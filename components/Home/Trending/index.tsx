@@ -29,31 +29,39 @@ const Trending = () => {
         <Container>
             <Heading
                 main="Trending Games"
-                sub="Checkout Our Weekly Updated Trending Collection."
+                sub="Checkout Our Weekly Updated Trending Games."
             />
 
             <Gallery>
-                {isLoading ? (
-                    <Skeleton
-                        count={3}
-                        height={40}
-                        style={{ marginTop: "30px" }}
-                    />
-                ) : (
-                    games.map((item: any) => {
-                        const screenshots = item.short_screenshots
-                            .slice(1, 4)
-                            .map((image: any) => image.image);
-                        return (
-                            <CollectionCard
-                                key={item.id}
-                                name={item.name}
-                                background_image={item.background_image}
-                                screenshots={screenshots}
-                            />
-                        );
-                    })
-                )}
+                {isLoading || !games
+                    ? Array.from({ length: 9 }).map((_, index) => (
+                          <Skeleton
+                              key={index}
+                              count={1}
+                              height={300}
+                              style={{ marginTop: "30px" }}
+                          />
+                      ))
+                    : games.map((item: any) => {
+                          const screenshots = item.short_screenshots
+                              .slice(1, 4)
+                              .map((image: any) => image.image);
+
+                          const platforms = item.parent_platforms
+                              .slice(0, 4)
+                              .map((platform: any) => platform.platform.name)
+                              .join(", ");
+
+                          return (
+                              <CollectionCard
+                                  key={item.id}
+                                  name={item.name}
+                                  background_image={item.background_image}
+                                  screenshots={screenshots}
+                                  platforms={platforms}
+                              />
+                          );
+                      })}
             </Gallery>
         </Container>
     );

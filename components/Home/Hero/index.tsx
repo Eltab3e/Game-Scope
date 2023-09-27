@@ -6,6 +6,7 @@ import { space } from "@/app/layout";
 import { useFetchGameById } from "@/shared/hooks/games/useFetchGameById";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { CountUp } from "use-count-up";
 //components
 import Heading from "@/components/shared/Heading";
 import Button from "@/components/shared/Button";
@@ -56,14 +57,14 @@ const RocketIcon = () => (
 const Hero = () => {
     const { data, isLoading, error, isError } = useFetchGameById(58175);
 
-    const { name, background_image, publishers } = data || {};
+    const { name, background_image, platforms } = data || {};
 
     return (
         <Container>
             <TextSection>
                 <Heading
-                    main="DISCOVER DIGITAL ART & COLLECT NFTs"
-                    sub="NFT MARKETPLACE UI CREATED WITH ANIMA FOR FIGMA. COLLECT, BUY, AND SELL ART FROM MORE THAN 20K NFT ARTISTS."
+                    main="Game-Scope: Play Beyond Boundaries"
+                    sub="Your one-stop destination for all things gaming! Immerse yourself in a world of endless excitement, explore games, discover studios, and seize exclusive giveaways."
                     large
                 />
 
@@ -79,21 +80,33 @@ const Hero = () => {
                 </ButtonWrapper>
                 <Figures>
                     <Items className={space.className}>
-                        240K+
+                        <CountUp
+                            isCounting
+                            end={854227}
+                            duration={5}
+                        />
                         <ItemWrapper>
-                            <Item>Sales</Item>
+                            <Item>Game</Item>
                         </ItemWrapper>
                     </Items>
                     <Items className={space.className}>
-                        100K+
+                        <CountUp
+                            isCounting
+                            end={65531}
+                            duration={5}
+                        />
                         <ItemWrapper>
-                            <Item>Auction</Item>
+                            <Item>Publisher</Item>
                         </ItemWrapper>
                     </Items>
                     <Items className={space.className}>
-                        210K+
+                        <CountUp
+                            isCounting
+                            end={27055}
+                            duration={5}
+                        />
                         <ItemWrapper>
-                            <Item>Artists</Item>
+                            <Item>Creator</Item>
                         </ItemWrapper>
                     </Items>
                 </Figures>
@@ -108,7 +121,7 @@ const Hero = () => {
                 <HightlightCard
                     name={name}
                     background_image={background_image}
-                    publishers={publishers?.map((item: any) => item.name).join(", ")}
+                    platforms={platforms?.map((platform: any) => platform.platform.name).join(", ")}
                 />
             )}
         </Container>

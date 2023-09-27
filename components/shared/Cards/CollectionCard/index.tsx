@@ -70,10 +70,12 @@ const CollectionCard = ({
     name,
     background_image,
     screenshots,
+    platforms,
 }: {
     name: string;
     background_image: string;
     screenshots: string[];
+    platforms: string[];
 }) => {
     return (
         <Container>
@@ -103,12 +105,12 @@ const CollectionCard = ({
                 <Info>
                     <Avatar>
                         <Image
-                            src={background_image}
+                            src={"/icons/List.svg"}
                             alt={name}
                             fill
                         />
                     </Avatar>
-                    <Name>{name}</Name>
+                    <Name>{platforms}.</Name>
                 </Info>
             </TextWrapper>
         </Container>
