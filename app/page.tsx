@@ -5,9 +5,9 @@ import Wrapper from "@/hoc/Wrapper";
 //components
 import Hero from "@/components/Home/Hero";
 import Trending from "@/components/Home/Trending";
-import Top from "@/components/Home/Top";
+import Developers from "@/components/Home/Developers";
 import Genres from "@/components/Home/Genres";
-import Discover from "@/components/Home/Discover";
+import Stores from "@/components/Home/Stores";
 import Highlight from "@/components/Home/Highlight";
 import About from "@/components/Home/About";
 import Subscribe from "@/components/Home/Subscribe";
@@ -19,9 +19,9 @@ export default function Home() {
             <Wrapper>
                 <Hero />
                 <Trending />
-                <Top />
+                <Developers />
                 <Genres />
-                <Discover />
+                <Stores />
             </Wrapper>
             <Highlight />
             <Wrapper>

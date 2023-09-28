@@ -37,7 +37,7 @@ const Genres = () => {
 
     return (
         <Container>
-            <Heading main="Browse Category" />
+            <Heading main="Browse Genres" />
 
             <Cards>
                 {isLoading || !genres ? (

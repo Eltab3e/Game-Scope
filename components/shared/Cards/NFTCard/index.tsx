@@ -84,56 +84,48 @@ const Number = styled.p`
 `;
 
 const NFTCard = ({
-    id,
-    title,
+    key,
     name,
-    imgUrl,
-    avatarUrl,
-    price,
-    bid,
+    domain,
+    games_count,
+    image_background,
 }: {
-    id: number;
-    title: string;
+    key: number;
     name: string;
-    imgUrl: string;
-    avatarUrl: string;
-    price: string;
-    bid: string;
+    domain: string;
+    games_count: number;
+    image_background: string;
 }) => {
     return (
         <Container>
             <ImageWrapper>
                 <Image
-                    src={imgUrl}
-                    alt={title}
+                    src={image_background}
+                    alt={name}
                     fill
                 />
             </ImageWrapper>
 
             <TextWrapper>
                 <Artist>
-                    <Title>{title}</Title>
+                    <Title>{name}</Title>
                     <Info>
                         <Avatar>
                             <Image
-                                src={avatarUrl}
-                                alt={title}
+                                src={"/icons/Eye.svg"}
+                                alt={name}
                                 fill
                             />
                         </Avatar>
-                        <Name className={space.className}>{name}</Name>
+                        <Name className={space.className}>No. of Games: {games_count}</Name>
                     </Info>
                 </Artist>
 
                 <AdditionalInfo>
                     <Price>
-                        <Text className={space.className}>Price</Text>
-                        <Number className={space.className}>{price}</Number>
+                        <Text className={space.className}>Official Website:</Text>
+                        <Number className={space.className}>{domain}</Number>
                     </Price>
-                    <Bid>
-                        <Text className={space.className}>Highest Bid</Text>
-                        <Number className={space.className}>{bid}</Number>
-                    </Bid>
                 </AdditionalInfo>
             </TextWrapper>
         </Container>

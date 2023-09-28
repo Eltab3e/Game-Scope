@@ -44,7 +44,7 @@ const Icon = () => (
     />
 );
 
-const Top = () => {
+const Developers = () => {
     const { data, isLoading, error, isError } = useFetchDevelopers();
     console.log("creators", data);
     const developers = data?.results;
@@ -53,8 +53,8 @@ const Top = () => {
         <Container>
             <TextContainer>
                 <Heading
-                    main="Top Creators"
-                    sub="Checkout Top Rated Creators On NFT Marketplace."
+                    main="Top Developers"
+                    sub="Checkout Top Rated Game Developers."
                 />
 
                 <ButtonContainer>
@@ -95,4 +95,4 @@ const Top = () => {
     );
 };
 
-export default Top;
+export default Developers;

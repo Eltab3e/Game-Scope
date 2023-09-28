@@ -2,11 +2,14 @@
 import Image from "next/image";
 import styled from "styled-components";
 //essential
-import { discover } from "@/constants";
+import { useFetchStores } from "@/shared/hooks/stores/useFetchStores";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 //components
 import Button from "@/components/shared/Button";
 import NFTCard from "@/components/shared/Cards/NFTCard";
 import Heading from "@/components/shared/Heading";
+import Error from "@/components/shared/Error";
 
 const Container = styled.div`
     display: flex;
@@ -40,6 +43,11 @@ const EyeIcon = () => (
 );
 
 const Discover = () => {
+    const { data, isLoading, error, isError } = useFetchStores();
+
+    const stores = data?.results;
+    console.log("stores", stores);
+
     return (
         <Container>
             <HeadingContainer>
@@ -61,18 +69,27 @@ const Discover = () => {
             </HeadingContainer>
 
             <Cards>
-                {discover.map((card) => (
-                    <NFTCard
-                        key={card.id}
-                        id={card.id}
-                        title={card.title}
-                        name={card.name}
-                        imgUrl={card.imgUrl}
-                        avatarUrl={card.avatarUrl}
-                        price={card.price}
-                        bid={card.bid}
-                    />
-                ))}
+                {isLoading || !stores ? (
+                    Array.from({ length: 3 }).map((_, index) => (
+                        <Skeleton
+                            key={index}
+                            count={1}
+                            height={400}
+                        />
+                    ))
+                ) : isError ? (
+                    <Error>{(error as Error).message}</Error>
+                ) : (
+                    stores.map((store: any) => (
+                        <NFTCard
+                            key={store.id}
+                            name={store.name}
+                            domain={store.domain}
+                            games_count={store.games_count}
+                            image_background={store.image_background}
+                        />
+                    ))
+                )}
             </Cards>
         </Container>
     );
