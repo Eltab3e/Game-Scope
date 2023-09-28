@@ -66,14 +66,14 @@ const Name = styled.p`
     line-height: 140%;
 `;
 
-const CollectionCard = ({
+const GameCard = ({
     name,
-    background_image,
+    image,
     screenshots,
     platforms,
 }: {
     name: string;
-    background_image: string;
+    image: string;
     screenshots: string[];
     platforms: string[];
 }) => {
@@ -82,7 +82,7 @@ const CollectionCard = ({
             <ImagesWrapper>
                 <MainImageWrapper>
                     <Image
-                        src={background_image}
+                        src={image}
                         alt={name}
                         fill
                     />
@@ -110,11 +110,11 @@ const CollectionCard = ({
                             fill
                         />
                     </Avatar>
-                    <Name>{platforms}.</Name>
+                    <Name>{platforms}</Name>
                 </Info>
             </TextWrapper>
         </Container>
     );
 };
 
-export default CollectionCard;
+export default GameCard;

@@ -1,8 +1,7 @@
 "use client";
 
-//essential
-import Wrapper from "@/hoc/Wrapper";
 //components
+import Wrapper from "@/hoc/Wrapper";
 import Hero from "@/components/Home/Hero";
 import Trending from "@/components/Home/Trending";
 import Developers from "@/components/Home/Developers";

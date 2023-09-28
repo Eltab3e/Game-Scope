@@ -1,7 +1,6 @@
 //required
 import Image from "next/image";
 import styled from "styled-components";
-//essential
 import { space } from "@/app/layout";
 //components
 import Button from "@/components/shared/Button";

@@ -32,22 +32,20 @@ const Title = styled.h5`
     line-height: 140%;
 `;
 
-const CategoryCard = ({
-    key,
+const GenreCard = ({
     name,
-    image_background,
+    image,
     iconUrl,
 }: {
-    key: number;
     name: string;
-    image_background: string;
+    image: string;
     iconUrl: string | null;
 }) => {
     return (
         <Container>
             <ImageWrapper>
                 <Image
-                    src={image_background}
+                    src={image}
                     alt={name}
                     fill
                     style={{ filter: "blur(10px)" }}
@@ -62,6 +60,7 @@ const CategoryCard = ({
                     )}
                 </IconWrapper>
             </ImageWrapper>
+
             <TextWrapper>
                 <Title>{name}</Title>
             </TextWrapper>
@@ -69,4 +68,4 @@ const CategoryCard = ({
     );
 };
 
-export default CategoryCard;
+export default GenreCard;

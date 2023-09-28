@@ -1,7 +1,6 @@
 //required
 import styled from "styled-components";
 import Image from "next/image";
-//essential
 import { generateOneColorGradient } from "@/utils";
 //components
 import Button from "@/components/shared/Button";

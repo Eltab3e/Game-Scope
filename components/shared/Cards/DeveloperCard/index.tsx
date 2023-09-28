@@ -1,7 +1,6 @@
 //required
 import Image from "next/image";
 import styled from "styled-components";
-//essential
 import { space } from "@/app/layout";
 
 const Container = styled.div`
@@ -65,22 +64,13 @@ const Ranking = styled.div`
     border-radius: 50%;
 `;
 
-const ArtistCard = ({
-    key,
-    name,
-    image,
-    count,
-}: {
-    key: number;
-    name: string;
-    image: string;
-    count: string;
-}) => {
+const DeveloperCard = ({ name, image, count }: { name: string; image: string; count: string }) => {
     return (
         <Container>
             <Ranking>
-                <LightText className={space.className}>{key}</LightText>
+                <LightText className={space.className}></LightText>
             </Ranking>
+
             <Avatar>
                 <Image
                     src={image}
@@ -89,6 +79,7 @@ const ArtistCard = ({
                     style={{ borderRadius: "50%" }}
                 />
             </Avatar>
+
             <TextWrapper>
                 <Title>{name}</Title>
                 <Info>
@@ -100,4 +91,4 @@ const ArtistCard = ({
     );
 };
 
-export default ArtistCard;
+export default DeveloperCard;

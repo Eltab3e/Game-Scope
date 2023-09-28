@@ -1,6 +1,5 @@
 //required
 import styled from "styled-components";
-//essential
 import { about } from "@/constants";
 //components
 import Heading from "@/components/shared/Heading";

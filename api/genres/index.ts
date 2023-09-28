@@ -1,3 +1,4 @@
+//required
 import apiClient from "../../shared/api";
 
 export const fetchGenres = (page = 1, page_size = 8) => {

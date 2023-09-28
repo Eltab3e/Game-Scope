@@ -1,3 +1,4 @@
+//required
 import { useQuery } from "@tanstack/react-query";
 import { fetchStores } from "@/api/stores";
 

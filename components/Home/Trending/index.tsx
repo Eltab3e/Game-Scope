@@ -1,12 +1,11 @@
-// Required
+//required
 import styled from "styled-components";
-// Essential
-import { useFetchAllGames } from "@/shared/hooks/games/useFetchAllGames";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-// Components
+import { useFetchAllGames } from "@/shared/hooks/games/useFetchAllGames";
+//components
 import Heading from "@/components/shared/Heading";
-import CollectionCard from "@/components/shared/Cards/CollectionCard";
+import GameCard from "@/components/shared/Cards/GameCard";
 import Error from "@/components/shared/Error";
 
 const Container = styled.div`
@@ -39,7 +38,7 @@ const Trending = () => {
                         <Skeleton
                             key={index}
                             count={1}
-                            height={300}
+                            height={400}
                             style={{ marginTop: "30px" }}
                         />
                     ))
@@ -57,10 +56,10 @@ const Trending = () => {
                             .join(", ");
 
                         return (
-                            <CollectionCard
+                            <GameCard
                                 key={item.id}
                                 name={item.name}
-                                background_image={item.background_image}
+                                image={item.background_image}
                                 screenshots={screenshots}
                                 platforms={platforms}
                             />

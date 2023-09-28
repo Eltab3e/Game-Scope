@@ -6,10 +6,9 @@ import { Space_Mono, Work_Sans } from "next/font/google";
 import { ThemeProvider } from "styled-components";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-//essential
+import { SkeletonTheme } from "react-loading-skeleton";
 import theme from "@/theme";
 import StyledComponentsRegistry from "@/lib/registry";
-import { SkeletonTheme } from "react-loading-skeleton";
 //components
 import Navbar from "@/components/Layout/Navbar";
 

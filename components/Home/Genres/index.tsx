@@ -1,12 +1,11 @@
 //required
 import styled from "styled-components";
-//essential
-import { useFetchGenres } from "@/shared/hooks/genres/useFetchGenres";
-import { categoryIcons } from "@/constants";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { categoryIcons } from "@/constants";
+import { useFetchGenres } from "@/shared/hooks/genres/useFetchGenres";
 //components
-import CategoryCard from "@/components/shared/Cards/CategoryCard";
+import GenreCard from "@/components/shared/Cards/GenreCard";
 import Heading from "@/components/shared/Heading";
 import Error from "@/components/shared/Error";
 
@@ -53,10 +52,10 @@ const Genres = () => {
                 ) : (
                     genres.map((item: any, index: number) => {
                         return (
-                            <CategoryCard
+                            <GenreCard
                                 key={item.id}
                                 name={item.name}
-                                image_background={item.image_background}
+                                image={item.image_background}
                                 iconUrl={getIconUrlByIndex(index)}
                             />
                         );

@@ -1,13 +1,12 @@
 //required
 import Image from "next/image";
 import styled from "styled-components";
-//essential
-import { useFetchStores } from "@/shared/hooks/stores/useFetchStores";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useFetchStores } from "@/shared/hooks/stores/useFetchStores";
 //components
 import Button from "@/components/shared/Button";
-import NFTCard from "@/components/shared/Cards/NFTCard";
+import StoreCard from "@/components/shared/Cards/StoreCard";
 import Heading from "@/components/shared/Heading";
 import Error from "@/components/shared/Error";
 
@@ -51,10 +50,7 @@ const Discover = () => {
     return (
         <Container>
             <HeadingContainer>
-                <Heading
-                    main="Discover More NFTs"
-                    sub="Explore New Trending NFTs."
-                ></Heading>
+                <Heading main="Discover Game Stores" />
 
                 <ButtonWrapper>
                     <Button
@@ -81,12 +77,12 @@ const Discover = () => {
                     <Error>{(error as Error).message}</Error>
                 ) : (
                     stores.map((store: any) => (
-                        <NFTCard
+                        <StoreCard
                             key={store.id}
                             name={store.name}
                             domain={store.domain}
-                            games_count={store.games_count}
-                            image_background={store.image_background}
+                            count={store.games_count}
+                            image={store.image_background}
                         />
                     ))
                 )}

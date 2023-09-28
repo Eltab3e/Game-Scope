@@ -1,16 +1,15 @@
 //required
 import Image from "next/image";
 import styled from "styled-components";
-//essential
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { space } from "@/app/layout";
 import { CountUp } from "use-count-up";
+import { space } from "@/app/layout";
 import { useFetchGameById } from "@/shared/hooks/games/useFetchGameById";
 //components
 import Heading from "@/components/shared/Heading";
 import Button from "@/components/shared/Button";
-import HightlightCard from "@/components/shared/Cards/HighlightCard";
+import HeroCard from "@/components/shared/Cards/HeroCard";
 import Error from "@/components/shared/Error";
 
 const Container = styled.div`
@@ -58,7 +57,7 @@ const RocketIcon = () => (
 const Hero = () => {
     const { data, isLoading, error, isError } = useFetchGameById(58175);
 
-    const { name, background_image, platforms } = data || {};
+    const { id, name, background_image, platforms } = data || {};
 
     return (
         <Container>
@@ -79,6 +78,7 @@ const Hero = () => {
                         Get Started
                     </Button>
                 </ButtonWrapper>
+
                 <Figures>
                     <Items className={space.className}>
                         <CountUp
@@ -90,21 +90,23 @@ const Hero = () => {
                             <Item>Game</Item>
                         </ItemWrapper>
                     </Items>
+
                     <Items className={space.className}>
                         <CountUp
                             isCounting
                             end={65531}
-                            duration={5}
+                            duration={4}
                         />
                         <ItemWrapper>
                             <Item>Publisher</Item>
                         </ItemWrapper>
                     </Items>
+
                     <Items className={space.className}>
                         <CountUp
                             isCounting
                             end={27055}
-                            duration={5}
+                            duration={3}
                         />
                         <ItemWrapper>
                             <Item>Creator</Item>
@@ -117,14 +119,15 @@ const Hero = () => {
                 <Skeleton
                     count={1}
                     height={500}
-                    width={500}
+                    width={650}
                 />
             ) : isError ? (
                 <Error>{(error as Error).message}</Error>
             ) : (
-                <HightlightCard
+                <HeroCard
+                    key={id}
                     name={name}
-                    background_image={background_image}
+                    image={background_image}
                     platforms={platforms?.map((platform: any) => platform.platform.name).join(", ")}
                 />
             )}

@@ -1,3 +1,4 @@
+//required
 import apiClient from "../../shared/api";
 
 export const fetchAllGames = (page = 1, page_size = 9) => {

@@ -1,7 +1,6 @@
 //required
 import Image from "next/image";
 import styled from "styled-components";
-//essential
 import { space } from "@/app/layout";
 
 const Container = styled.div``;
@@ -22,7 +21,7 @@ const TextWrapper = styled.div`
     border-radius: 0 0 2rem 2rem;
 `;
 
-const Artist = styled.div`
+const Store = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -57,14 +56,7 @@ const AdditionalInfo = styled.div`
     justify-content: space-between;
 `;
 
-const Price = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding-right: 2rem;
-`;
-
-const Bid = styled.div`
+const Website = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -77,59 +69,59 @@ const Text = styled.p`
     line-height: 110%;
 `;
 
-const Number = styled.p`
+const Link = styled.p`
     font-size: ${(props) => props.theme.fontSizes.base};
     font-weight: 400;
     line-height: 140%;
 `;
 
-const NFTCard = ({
+const StoreCard = ({
     key,
     name,
     domain,
-    games_count,
-    image_background,
+    count,
+    image,
 }: {
     key: number;
     name: string;
     domain: string;
-    games_count: number;
-    image_background: string;
+    count: number;
+    image: string;
 }) => {
     return (
         <Container>
             <ImageWrapper>
                 <Image
-                    src={image_background}
+                    src={image}
                     alt={name}
                     fill
                 />
             </ImageWrapper>
 
             <TextWrapper>
-                <Artist>
+                <Store>
                     <Title>{name}</Title>
                     <Info>
                         <Avatar>
                             <Image
-                                src={"/icons/Eye.svg"}
+                                src={"/icons/List.svg"}
                                 alt={name}
                                 fill
                             />
                         </Avatar>
-                        <Name className={space.className}>No. of Games: {games_count}</Name>
+                        <Name className={space.className}>No. of Games: {count}</Name>
                     </Info>
-                </Artist>
+                </Store>
 
                 <AdditionalInfo>
-                    <Price>
+                    <Website>
                         <Text className={space.className}>Official Website:</Text>
-                        <Number className={space.className}>{domain}</Number>
-                    </Price>
+                        <Link className={space.className}>{domain}</Link>
+                    </Website>
                 </AdditionalInfo>
             </TextWrapper>
         </Container>
     );
 };
 
-export default NFTCard;
+export default StoreCard;

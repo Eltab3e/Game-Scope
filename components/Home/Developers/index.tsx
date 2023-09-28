@@ -1,13 +1,12 @@
 //required
 import styled from "styled-components";
 import Image from "next/image";
-//essential
-import { useFetchDevelopers } from "@/shared/hooks/developers/useFetchDevelopers";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useFetchDevelopers } from "@/shared/hooks/developers/useFetchDevelopers";
 //components
 import Button from "@/components/shared/Button";
-import ArtistCard from "@/components/shared/Cards/ArtistCard";
+import DeveloperCard from "@/components/shared/Cards/DeveloperCard";
 import Heading from "@/components/shared/Heading";
 import Error from "@/components/shared/Error";
 
@@ -46,7 +45,7 @@ const Icon = () => (
 
 const Developers = () => {
     const { data, isLoading, error, isError } = useFetchDevelopers();
-    console.log("creators", data);
+
     const developers = data?.results;
 
     return (
@@ -64,7 +63,7 @@ const Developers = () => {
                         height="secondary"
                         preIcon={Icon}
                     >
-                        View Rankings
+                        View All Developers
                     </Button>
                 </ButtonContainer>
             </TextContainer>
@@ -82,7 +81,7 @@ const Developers = () => {
                     <Error>{(error as Error).message}</Error>
                 ) : (
                     developers.map((developer: any) => (
-                        <ArtistCard
+                        <DeveloperCard
                             key={developer.id}
                             name={developer.name}
                             count={developer.games_count}
