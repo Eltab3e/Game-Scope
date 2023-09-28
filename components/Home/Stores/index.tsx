@@ -48,7 +48,7 @@ const Discover = () => {
     console.log("stores", stores);
 
     return (
-        <Container>
+        <Container id="stores">
             <HeadingContainer>
                 <Heading main="Discover Game Stores" />
 

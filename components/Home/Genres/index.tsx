@@ -35,7 +35,7 @@ const Genres = () => {
     };
 
     return (
-        <Container>
+        <Container id="genres">
             <Heading main="Browse Genres" />
 
             <Cards>

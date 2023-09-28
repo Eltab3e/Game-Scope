@@ -131,10 +131,11 @@ const Footer = () => {
                         </Logo>
                         <Title className={space.className}>GAME-SCOPE</Title>
                     </LogoWrapper>
+
                     <AdditionalInfo>
                         <Text>
-                            NFT marketplace UI created
-                            <br /> with Anima for Figma.
+                            Your one-stop destination
+                            <br /> for all things gaming.
                         </Text>
                         <Text>Join Our Community.</Text>
                         <Community>
@@ -171,14 +172,16 @@ const Footer = () => {
                         </Community>
                     </AdditionalInfo>
                 </Info>
+
                 <Explore>
                     <Title className={space.className}>Explore</Title>
                     <AdditionalInfo>
-                        <Text>Marketplace</Text>
-                        <Text>Rankings</Text>
-                        <Text>Connect a Wallet</Text>
+                        <Text>Trending</Text>
+                        <Text>Developers</Text>
+                        <Text>Stores</Text>
                     </AdditionalInfo>
                 </Explore>
+
                 <Subscribe>
                     <Title className={space.className}>Join Our Weekly Digest</Title>
                     <Text>
@@ -204,8 +207,10 @@ const Footer = () => {
                     </Form>
                 </Subscribe>
             </Wrapper>
+
             <Copy>
-                <Text>Ⓒ NFT Market. Use this template freely.</Text>
+                <Text>Ⓒ 2023 Game-Scope. By Ahmed Eltabie.</Text>
+                <Text>This Website Is Powered By RAWG Video Games Database API.</Text>
             </Copy>
         </Container>
     );

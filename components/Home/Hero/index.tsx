@@ -94,22 +94,22 @@ const Hero = () => {
                     <Items className={space.className}>
                         <CountUp
                             isCounting
-                            end={65531}
+                            end={437602}
                             duration={4}
                         />
                         <ItemWrapper>
-                            <Item>Publisher</Item>
+                            <Item>Developer</Item>
                         </ItemWrapper>
                     </Items>
 
                     <Items className={space.className}>
                         <CountUp
                             isCounting
-                            end={27055}
+                            end={65531}
                             duration={3}
                         />
                         <ItemWrapper>
-                            <Item>Creator</Item>
+                            <Item>Publisher</Item>
                         </ItemWrapper>
                     </Items>
                 </Figures>

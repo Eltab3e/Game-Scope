@@ -19,10 +19,10 @@ const Cards = styled.div`
 
 const About = () => {
     return (
-        <Container>
+        <Container id="about">
             <Heading
                 main="About Us"
-                sub="Find Out How To Get Started."
+                sub="Discover The Gaming Universe With Us."
             />
 
             <Cards>

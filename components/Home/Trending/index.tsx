@@ -26,7 +26,7 @@ const Trending = () => {
     const games = data?.results;
 
     return (
-        <Container>
+        <Container id="tranding">
             <Heading
                 main="Trending Games"
                 sub="Checkout Our Weekly Updated Trending Games."
