@@ -57,8 +57,6 @@ const RocketIcon = () => (
 const Hero = () => {
     const { data, isLoading, error, isError } = useFetchGameById(58175);
 
-    const { id, name, background_image, platforms } = data || {};
-
     return (
         <Container>
             <TextSection>
@@ -118,17 +116,19 @@ const Hero = () => {
             {isLoading ? (
                 <Skeleton
                     count={1}
-                    height={500}
-                    width={650}
+                    width={630}
+                    height={410}
                 />
             ) : isError ? (
                 <Error>{(error as Error).message}</Error>
             ) : (
                 <HeroCard
-                    key={id}
-                    name={name}
-                    image={background_image}
-                    platforms={platforms?.map((platform: any) => platform.platform.name).join(", ")}
+                    key={data.id}
+                    name={data.name}
+                    image={data.background_image}
+                    platforms={data.platforms
+                        .map((platform: any) => platform.platform.name)
+                        .join(", ")}
                 />
             )}
         </Container>

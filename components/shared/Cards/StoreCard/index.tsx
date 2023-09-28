@@ -3,6 +3,13 @@ import Image from "next/image";
 import styled from "styled-components";
 import { space } from "@/app/layout";
 
+interface StoreCardProps {
+    name: string;
+    domain: string;
+    count: number;
+    image: string;
+}
+
 const Container = styled.div``;
 
 const ImageWrapper = styled.div`
@@ -75,19 +82,7 @@ const Link = styled.p`
     line-height: 140%;
 `;
 
-const StoreCard = ({
-    key,
-    name,
-    domain,
-    count,
-    image,
-}: {
-    key: number;
-    name: string;
-    domain: string;
-    count: number;
-    image: string;
-}) => {
+const StoreCard = ({ name, domain, count, image }: StoreCardProps) => {
     return (
         <Container>
             <ImageWrapper>

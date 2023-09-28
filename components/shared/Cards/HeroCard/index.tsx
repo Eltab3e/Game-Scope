@@ -2,6 +2,12 @@
 import Image from "next/image";
 import styled from "styled-components";
 
+interface HeroCardProps {
+    name: string;
+    image: string;
+    platforms: string;
+}
+
 const Container = styled.div`
     flex: 0.5;
     display: flex;
@@ -48,14 +54,15 @@ const Name = styled.p`
     line-height: 140%;
 `;
 
-const HeroCard = ({ name, image, platforms }: { name: string; image: string; platforms: any }) => {
+const HeroCard = ({ name, image, platforms }: HeroCardProps) => {
     return (
         <Container>
             <ImageWrapper>
                 <Image
                     src={image}
                     alt={name}
-                    fill
+                    width={600}
+                    height={410}
                     priority
                 />
             </ImageWrapper>

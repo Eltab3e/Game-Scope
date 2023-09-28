@@ -41,7 +41,7 @@ const EyeIcon = () => (
     />
 );
 
-const Discover = () => {
+const Stores = () => {
     const { data, isLoading, error, isError } = useFetchStores();
 
     const stores = data?.results;
@@ -91,4 +91,4 @@ const Discover = () => {
     );
 };
 
-export default Discover;
+export default Stores;

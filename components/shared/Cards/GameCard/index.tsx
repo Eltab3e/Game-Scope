@@ -2,6 +2,13 @@
 import Image from "next/image";
 import styled from "styled-components";
 
+interface GameCardProps {
+    name: string;
+    image: string;
+    screenshots: string[];
+    platforms: string[];
+}
+
 const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -66,17 +73,7 @@ const Name = styled.p`
     line-height: 140%;
 `;
 
-const GameCard = ({
-    name,
-    image,
-    screenshots,
-    platforms,
-}: {
-    name: string;
-    image: string;
-    screenshots: string[];
-    platforms: string[];
-}) => {
+const GameCard = ({ name, image, screenshots, platforms }: GameCardProps) => {
     return (
         <Container>
             <ImagesWrapper>

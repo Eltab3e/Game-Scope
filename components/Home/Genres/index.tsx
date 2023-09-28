@@ -50,12 +50,12 @@ const Genres = () => {
                 ) : isError ? (
                     <Error>{(error as Error).message}</Error>
                 ) : (
-                    genres.map((item: any, index: number) => {
+                    genres.map((genre: any, index: number) => {
                         return (
                             <GenreCard
-                                key={item.id}
-                                name={item.name}
-                                image={item.image_background}
+                                key={genre.id}
+                                name={genre.name}
+                                image={genre.image_background}
                                 iconUrl={getIconUrlByIndex(index)}
                             />
                         );

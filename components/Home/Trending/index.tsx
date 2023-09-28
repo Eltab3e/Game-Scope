@@ -45,21 +45,21 @@ const Trending = () => {
                 ) : isError ? (
                     <Error>{(error as Error).message}</Error>
                 ) : (
-                    games.map((item: any) => {
-                        const screenshots = item.short_screenshots
+                    games.map((game: any) => {
+                        const screenshots = game.short_screenshots
                             .slice(1, 4)
                             .map((image: any) => image.image);
 
-                        const platforms = item.parent_platforms
+                        const platforms = game.parent_platforms
                             .slice(0, 4)
                             .map((platform: any) => platform.platform.name)
                             .join(", ");
 
                         return (
                             <GameCard
-                                key={item.id}
-                                name={item.name}
-                                image={item.background_image}
+                                key={game.id}
+                                name={game.name}
+                                image={game.background_image}
                                 screenshots={screenshots}
                                 platforms={platforms}
                             />

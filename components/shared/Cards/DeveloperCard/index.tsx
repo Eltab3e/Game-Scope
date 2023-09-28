@@ -3,6 +3,13 @@ import Image from "next/image";
 import styled from "styled-components";
 import { space } from "@/app/layout";
 
+interface DeveloperCardProps {
+    name: string;
+    image: string;
+    count: string;
+    ranking: number;
+}
+
 const Container = styled.div`
     background-color: ${(props) => props.theme.colors.secondaryBg};
     position: relative;
@@ -64,11 +71,11 @@ const Ranking = styled.div`
     border-radius: 50%;
 `;
 
-const DeveloperCard = ({ name, image, count }: { name: string; image: string; count: string }) => {
+const DeveloperCard = ({ name, image, count, ranking }: DeveloperCardProps) => {
     return (
         <Container>
             <Ranking>
-                <LightText className={space.className}></LightText>
+                <LightText className={space.className}>{ranking}</LightText>
             </Ranking>
 
             <Avatar>

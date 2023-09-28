@@ -80,12 +80,13 @@ const Developers = () => {
                 ) : isError ? (
                     <Error>{(error as Error).message}</Error>
                 ) : (
-                    developers.map((developer: any) => (
+                    developers.map((developer: any, index: number) => (
                         <DeveloperCard
                             key={developer.id}
                             name={developer.name}
                             count={developer.games_count}
                             image={developer.image_background}
+                            ranking={index + 1}
                         />
                     ))
                 )}

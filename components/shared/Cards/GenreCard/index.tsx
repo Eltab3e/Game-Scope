@@ -2,6 +2,12 @@
 import Image from "next/image";
 import styled from "styled-components";
 
+interface GenreCardProps {
+    name: string;
+    image: string;
+    iconUrl: string | null;
+}
+
 const Container = styled.div``;
 
 const ImageWrapper = styled.div`
@@ -32,15 +38,7 @@ const Title = styled.h5`
     line-height: 140%;
 `;
 
-const GenreCard = ({
-    name,
-    image,
-    iconUrl,
-}: {
-    name: string;
-    image: string;
-    iconUrl: string | null;
-}) => {
+const GenreCard = ({ name, image, iconUrl }: GenreCardProps) => {
     return (
         <Container>
             <ImageWrapper>
