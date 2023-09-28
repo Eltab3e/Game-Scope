@@ -2,12 +2,14 @@
 import styled from "styled-components";
 import Image from "next/image";
 //essential
-import { useFetchCreators } from "@/shared/hooks/creators/useFetchCreators";
-import { top } from "@/constants";
+import { useFetchDevelopers } from "@/shared/hooks/developers/useFetchDevelopers";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 //components
 import Button from "@/components/shared/Button";
 import ArtistCard from "@/components/shared/Cards/ArtistCard";
 import Heading from "@/components/shared/Heading";
+import Error from "@/components/shared/Error";
 
 const Container = styled.div`
     color: ${(props) => props.theme.colors.white};
@@ -43,7 +45,7 @@ const Icon = () => (
 );
 
 const Top = () => {
-    const { data, isLoading, error, isError } = useFetchCreators();
+    const { data, isLoading, error, isError } = useFetchDevelopers();
     console.log("creators", data);
     const developers = data?.results;
 
@@ -68,8 +70,16 @@ const Top = () => {
             </TextContainer>
 
             <Gallery>
-                {isLoading ? (
-                    <h1>Loading</h1>
+                {isLoading || !developers ? (
+                    Array.from({ length: 12 }).map((_, index) => (
+                        <Skeleton
+                            key={index}
+                            count={1}
+                            height={220}
+                        />
+                    ))
+                ) : isError ? (
+                    <Error>{(error as Error).message}</Error>
                 ) : (
                     developers.map((developer: any) => (
                         <ArtistCard

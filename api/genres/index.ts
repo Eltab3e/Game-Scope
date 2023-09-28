@@ -1,8 +1,8 @@
 import apiClient from "../../shared/api";
 
-export const fetchCreators = (page = 1, page_size = 12) => {
+export const fetchGenres = (page = 1, page_size = 8) => {
     return apiClient
-        .get(`/developers?page=${page}&page_size=${page_size}`)
+        .get(`/genres?page=${page}&page_size=${page_size}`)
         .then((res) => {
             return res.data;
         })

@@ -1,12 +1,13 @@
-//required
+// Required
 import styled from "styled-components";
-//essential
+// Essential
 import { useFetchAllGames } from "@/shared/hooks/games/useFetchAllGames";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-//components
+// Components
 import Heading from "@/components/shared/Heading";
 import CollectionCard from "@/components/shared/Cards/CollectionCard";
+import Error from "@/components/shared/Error";
 
 const Container = styled.div`
     display: flex;
@@ -33,35 +34,39 @@ const Trending = () => {
             />
 
             <Gallery>
-                {isLoading || !games
-                    ? Array.from({ length: 9 }).map((_, index) => (
-                          <Skeleton
-                              key={index}
-                              count={1}
-                              height={300}
-                              style={{ marginTop: "30px" }}
-                          />
-                      ))
-                    : games.map((item: any) => {
-                          const screenshots = item.short_screenshots
-                              .slice(1, 4)
-                              .map((image: any) => image.image);
+                {isLoading || !games ? (
+                    Array.from({ length: 9 }).map((_, index) => (
+                        <Skeleton
+                            key={index}
+                            count={1}
+                            height={300}
+                            style={{ marginTop: "30px" }}
+                        />
+                    ))
+                ) : isError ? (
+                    <Error>{(error as Error).message}</Error>
+                ) : (
+                    games.map((item: any) => {
+                        const screenshots = item.short_screenshots
+                            .slice(1, 4)
+                            .map((image: any) => image.image);
 
-                          const platforms = item.parent_platforms
-                              .slice(0, 4)
-                              .map((platform: any) => platform.platform.name)
-                              .join(", ");
+                        const platforms = item.parent_platforms
+                            .slice(0, 4)
+                            .map((platform: any) => platform.platform.name)
+                            .join(", ");
 
-                          return (
-                              <CollectionCard
-                                  key={item.id}
-                                  name={item.name}
-                                  background_image={item.background_image}
-                                  screenshots={screenshots}
-                                  platforms={platforms}
-                              />
-                          );
-                      })}
+                        return (
+                            <CollectionCard
+                                key={item.id}
+                                name={item.name}
+                                background_image={item.background_image}
+                                screenshots={screenshots}
+                                platforms={platforms}
+                            />
+                        );
+                    })
+                )}
             </Gallery>
         </Container>
     );

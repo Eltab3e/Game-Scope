@@ -1,13 +1,14 @@
 //required
 import styled from "styled-components";
 //essential
-import { useFetchCategories } from "@/shared/hooks/categories/useFetchCategories";
+import { useFetchGenres } from "@/shared/hooks/genres/useFetchGenres";
 import { categoryIcons } from "@/constants";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 //components
 import CategoryCard from "@/components/shared/Cards/CategoryCard";
 import Heading from "@/components/shared/Heading";
+import Error from "@/components/shared/Error";
 
 const Container = styled.div`
     display: flex;
@@ -21,10 +22,10 @@ const Cards = styled.div`
     gap: 3rem;
 `;
 
-const Category = () => {
-    const { data, isLoading, error, isError } = useFetchCategories();
+const Genres = () => {
+    const { data, isLoading, error, isError } = useFetchGenres();
 
-    const categories = data?.results;
+    const genres = data?.results;
 
     // Function to get the icon URL for a category based on its index
     const getIconUrlByIndex = (index: number) => {
@@ -39,14 +40,18 @@ const Category = () => {
             <Heading main="Browse Category" />
 
             <Cards>
-                {isLoading ? (
-                    <Skeleton
-                        count={3}
-                        height={40}
-                        style={{ marginTop: "30px" }}
-                    />
+                {isLoading || !genres ? (
+                    Array.from({ length: 8 }).map((_, index) => (
+                        <Skeleton
+                            key={index}
+                            count={1}
+                            height={320}
+                        />
+                    ))
+                ) : isError ? (
+                    <Error>{(error as Error).message}</Error>
                 ) : (
-                    categories.map((item: any, index: number) => {
+                    genres.map((item: any, index: number) => {
                         return (
                             <CategoryCard
                                 key={item.id}
@@ -62,4 +67,4 @@ const Category = () => {
     );
 };
 
-export default Category;
+export default Genres;

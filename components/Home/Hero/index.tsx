@@ -2,15 +2,16 @@
 import Image from "next/image";
 import styled from "styled-components";
 //essential
-import { space } from "@/app/layout";
-import { useFetchGameById } from "@/shared/hooks/games/useFetchGameById";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { space } from "@/app/layout";
 import { CountUp } from "use-count-up";
+import { useFetchGameById } from "@/shared/hooks/games/useFetchGameById";
 //components
 import Heading from "@/components/shared/Heading";
 import Button from "@/components/shared/Button";
 import HightlightCard from "@/components/shared/Cards/HighlightCard";
+import Error from "@/components/shared/Error";
 
 const Container = styled.div`
     display: flex;
@@ -115,8 +116,11 @@ const Hero = () => {
             {isLoading ? (
                 <Skeleton
                     count={1}
-                    height={140}
+                    height={500}
+                    width={500}
                 />
+            ) : isError ? (
+                <Error>{(error as Error).message}</Error>
             ) : (
                 <HightlightCard
                     name={name}
