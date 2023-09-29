@@ -28,9 +28,13 @@ const Logo = styled.div`
     height: 3.2rem;
 `;
 
-const Title = styled.h4`
+const Title = styled(Link)`
     font-size: ${(props) => props.theme.fontSizes.h4};
     font-weight: 400;
+
+    &:hover {
+        color: ${(props) => props.theme.colors.purple};
+    }
 `;
 
 const NavWrapper = styled.div`
@@ -53,6 +57,10 @@ const Item = styled(Link)`
     font-size: ${(props) => props.theme.fontSizes.base};
     font-weight: 600;
     line-height: 140%;
+
+    &:hover {
+        color: ${(props) => props.theme.colors.purple};
+    }
 `;
 
 const ButtonWrapper = styled.div`
@@ -79,8 +87,15 @@ const Navbar = () => {
                         fill
                     />
                 </Logo>
-                <Title className={space.className}>GAME-SCOPE</Title>
+
+                <Title
+                    className={space.className}
+                    href={"/"}
+                >
+                    GAME-SCOPE
+                </Title>
             </LogoWrapper>
+
             <NavWrapper>
                 <NavList>
                     {navLinks.map((link) => (
@@ -89,6 +104,7 @@ const Navbar = () => {
                         </NavItem>
                     ))}
                 </NavList>
+
                 <ButtonWrapper>
                     <Button
                         fullwidth

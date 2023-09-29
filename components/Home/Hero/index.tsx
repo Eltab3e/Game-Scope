@@ -124,6 +124,7 @@ const Hero = () => {
             ) : (
                 <HeroCard
                     key={data.id}
+                    id={data.id}
                     name={data.name}
                     image={data.background_image}
                     released={data.released}

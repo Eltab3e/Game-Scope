@@ -1,8 +1,10 @@
 //required
 import Image from "next/image";
+import Link from "next/link";
 import styled from "styled-components";
 
 interface HeroCardProps {
+    id: number;
     name: string;
     image: string;
     platforms: string;
@@ -62,18 +64,23 @@ const Released = styled.p`
     line-height: 140%;
 `;
 
-const HeroCard = ({ name, image, platforms, released }: HeroCardProps) => {
+const HeroCard = ({ id, name, image, platforms, released }: HeroCardProps) => {
     return (
         <Container>
-            <ImageWrapper>
-                <Image
-                    src={image}
-                    alt={name}
-                    width={600}
-                    height={410}
-                    priority
-                />
-            </ImageWrapper>
+            <Link
+                href={`/games/[id]`}
+                as={`/games/${id}`}
+            >
+                <ImageWrapper>
+                    <Image
+                        src={image}
+                        alt={name}
+                        width={600}
+                        height={410}
+                        priority
+                    />
+                </ImageWrapper>
+            </Link>
 
             <TextWrapper>
                 <Title>{name}</Title>
