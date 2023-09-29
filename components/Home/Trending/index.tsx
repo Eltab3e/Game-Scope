@@ -7,11 +7,24 @@ import { useFetchAllGames } from "@/shared/hooks/games/useFetchAllGames";
 import Heading from "@/components/shared/Heading";
 import GameCard from "@/components/shared/Cards/GameCard";
 import Error from "@/components/shared/Error";
+import Button from "@/components/shared/Button";
+import Image from "next/image";
 
 const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 6rem;
+`;
+
+const HeadingContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+const ButtonWrapper = styled.div`
+    align-self: flex-end;
+    display: flex;
+    width: 24.7rem;
 `;
 
 const Gallery = styled.div`
@@ -20,6 +33,15 @@ const Gallery = styled.div`
     gap: 3rem;
 `;
 
+const RocketIcon = () => (
+    <Image
+        src="/icons/Rocket.svg"
+        alt="icon"
+        width={20}
+        height={20}
+    />
+);
+
 const Trending = () => {
     const { data, isLoading, error, isError } = useFetchAllGames();
 
@@ -27,10 +49,23 @@ const Trending = () => {
 
     return (
         <Container id="tranding">
-            <Heading
-                main="Trending Games"
-                sub="Checkout Our Weekly Updated Trending Games."
-            />
+            <HeadingContainer>
+                <Heading
+                    main="Trending Games"
+                    sub="Checkout Our Weekly Updated Trending Games."
+                />
+
+                <ButtonWrapper>
+                    <Button
+                        fullwidth
+                        variant="outline"
+                        height="secondary"
+                        preIcon={RocketIcon}
+                    >
+                        Browse Games
+                    </Button>
+                </ButtonWrapper>
+            </HeadingContainer>
 
             <Gallery>
                 {isLoading || !games ? (

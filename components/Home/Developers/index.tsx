@@ -34,9 +34,9 @@ const Gallery = styled.div`
     gap: 3rem;
 `;
 
-const Icon = () => (
+const EyeIcon = () => (
     <Image
-        src="/icons/RocketLaunch.svg"
+        src="/icons/Eye.svg"
         alt="user"
         width={20}
         height={20}
@@ -61,9 +61,9 @@ const Developers = () => {
                         fullwidth
                         variant="outline"
                         height="secondary"
-                        preIcon={Icon}
+                        preIcon={EyeIcon}
                     >
-                        View All Developers
+                        View Developers
                     </Button>
                 </ButtonContainer>
             </TextContainer>

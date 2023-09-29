@@ -6,6 +6,7 @@ interface HeroCardProps {
     name: string;
     image: string;
     platforms: string;
+    released: string;
 }
 
 const Container = styled.div`
@@ -54,7 +55,14 @@ const Name = styled.p`
     line-height: 140%;
 `;
 
-const HeroCard = ({ name, image, platforms }: HeroCardProps) => {
+const Released = styled.p`
+    margin-left: auto;
+    font-size: ${(props) => props.theme.fontSizes.base};
+    font-weight: 400;
+    line-height: 140%;
+`;
+
+const HeroCard = ({ name, image, platforms, released }: HeroCardProps) => {
     return (
         <Container>
             <ImageWrapper>
@@ -77,7 +85,8 @@ const HeroCard = ({ name, image, platforms }: HeroCardProps) => {
                             fill
                         />
                     </Avatar>
-                    <Name>{platforms}</Name>
+                    <Name>Platforms: {platforms}</Name>
+                    <Released>Release Date: {released}</Released>
                 </Info>
             </TextWrapper>
         </Container>

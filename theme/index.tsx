@@ -6,7 +6,7 @@ const theme = {
         white: "#FFFFFF",
         purple: "#A259FF",
         blue: "#377DF7",
-        red: "#FF6250",
+        red: "#ff1900",
     },
     fontSizes: {
         h1: "6.7rem",

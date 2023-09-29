@@ -1,4 +1,5 @@
 //required
+import { space } from "@/app/layout";
 import Image from "next/image";
 import styled from "styled-components";
 
@@ -6,6 +7,7 @@ interface GenreCardProps {
     name: string;
     image: string;
     iconUrl: string | null;
+    count: number;
 }
 
 const Container = styled.div``;
@@ -30,6 +32,11 @@ const TextWrapper = styled.div`
     background-color: ${(props) => props.theme.colors.secondaryBg};
     padding: 3rem;
     border-radius: 0 0 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
 `;
 
 const Title = styled.h5`
@@ -38,7 +45,25 @@ const Title = styled.h5`
     line-height: 140%;
 `;
 
-const GenreCard = ({ name, image, iconUrl }: GenreCardProps) => {
+const Info = styled.div`
+    display: flex;
+    gap: 1rem;
+`;
+
+const Text = styled.p`
+    font-size: ${(props) => props.theme.fontSizes.base};
+    font-weight: 400;
+    line-height: 140%;
+`;
+
+const LightText = styled.p`
+    font-size: ${(props) => props.theme.fontSizes.base};
+    color: ${(props) => props.theme.colors.grey};
+    font-weight: 400;
+    line-height: 140%;
+`;
+
+const GenreCard = ({ name, image, iconUrl, count }: GenreCardProps) => {
     return (
         <Container>
             <ImageWrapper>
@@ -61,6 +86,10 @@ const GenreCard = ({ name, image, iconUrl }: GenreCardProps) => {
 
             <TextWrapper>
                 <Title>{name}</Title>
+                <Info>
+                    <LightText>No. of Games:</LightText>
+                    <Text className={space.className}>{count}</Text>
+                </Info>
             </TextWrapper>
         </Container>
     );

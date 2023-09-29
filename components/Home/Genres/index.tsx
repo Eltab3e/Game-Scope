@@ -8,6 +8,8 @@ import { useFetchGenres } from "@/shared/hooks/genres/useFetchGenres";
 import GenreCard from "@/components/shared/Cards/GenreCard";
 import Heading from "@/components/shared/Heading";
 import Error from "@/components/shared/Error";
+import Image from "next/image";
+import Button from "@/components/shared/Button";
 
 const Container = styled.div`
     display: flex;
@@ -15,11 +17,31 @@ const Container = styled.div`
     gap: 6rem;
 `;
 
+const TextContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+const ButtonContainer = styled.div`
+    width: 24.7rem;
+    display: flex;
+    align-items: flex-end;
+`;
+
 const Cards = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 3rem;
 `;
+
+const MagnifyingGlassIcon = () => (
+    <Image
+        src="/icons/MagnifyingGlass.svg"
+        alt="user"
+        width={20}
+        height={20}
+    />
+);
 
 const Genres = () => {
     const { data, isLoading, error, isError } = useFetchGenres();
@@ -36,7 +58,19 @@ const Genres = () => {
 
     return (
         <Container id="genres">
-            <Heading main="Browse Genres" />
+            <TextContainer>
+                <Heading main="Game Genres" />
+                <ButtonContainer>
+                    <Button
+                        fullwidth
+                        variant="outline"
+                        height="secondary"
+                        preIcon={MagnifyingGlassIcon}
+                    >
+                        More Genres
+                    </Button>
+                </ButtonContainer>
+            </TextContainer>
 
             <Cards>
                 {isLoading || !genres ? (
@@ -56,6 +90,7 @@ const Genres = () => {
                                 key={genre.id}
                                 name={genre.name}
                                 image={genre.image_background}
+                                count={genre.games_count}
                                 iconUrl={getIconUrlByIndex(index)}
                             />
                         );

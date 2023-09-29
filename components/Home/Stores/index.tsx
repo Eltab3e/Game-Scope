@@ -32,9 +32,9 @@ const Cards = styled.div`
     gap: 3rem;
 `;
 
-const EyeIcon = () => (
+const GlobeIcon = () => (
     <Image
-        src="/icons/Eye.svg"
+        src="/icons/Globe.svg"
         alt="icon"
         width={20}
         height={20}
@@ -50,16 +50,16 @@ const Stores = () => {
     return (
         <Container id="stores">
             <HeadingContainer>
-                <Heading main="Discover Game Stores" />
+                <Heading main="Game Stores" />
 
                 <ButtonWrapper>
                     <Button
                         fullwidth
                         variant="outline"
                         height="secondary"
-                        preIcon={EyeIcon}
+                        preIcon={GlobeIcon}
                     >
-                        Get Started
+                        Discover Stores
                     </Button>
                 </ButtonWrapper>
             </HeadingContainer>

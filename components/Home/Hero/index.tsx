@@ -126,6 +126,7 @@ const Hero = () => {
                     key={data.id}
                     name={data.name}
                     image={data.background_image}
+                    released={data.released}
                     platforms={data.platforms
                         .map((platform: any) => platform.platform.name)
                         .join(", ")}
