@@ -22,3 +22,14 @@ export const fetchGameById = (id: number) => {
             throw err;
         });
 };
+
+export const fetchGameTrailer = (id: number) => {
+    return apiClient
+        .get(`games/${id}/movies`)
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => {
+            throw err;
+        });
+};
