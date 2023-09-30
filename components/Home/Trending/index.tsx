@@ -93,6 +93,7 @@ const Trending = () => {
                         return (
                             <GameCard
                                 key={game.id}
+                                id={game.id}
                                 name={game.name}
                                 image={game.background_image}
                                 screenshots={screenshots}

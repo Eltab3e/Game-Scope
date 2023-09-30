@@ -1,8 +1,10 @@
 //required
 import Image from "next/image";
+import Link from "next/link";
 import styled from "styled-components";
 
 interface GameCardProps {
+    id: number;
     name: string;
     image: string;
     screenshots: string[];
@@ -73,26 +75,37 @@ const Name = styled.p`
     line-height: 140%;
 `;
 
-const GameCard = ({ name, image, screenshots, platforms }: GameCardProps) => {
+const GameCard = ({ id, name, image, screenshots, platforms }: GameCardProps) => {
     return (
         <Container>
             <ImagesWrapper>
-                <MainImageWrapper>
-                    <Image
-                        src={image}
-                        alt={name}
-                        fill
-                    />
-                </MainImageWrapper>
+                <Link
+                    href={`/games/[id]`}
+                    as={`/games/${id}`}
+                >
+                    <MainImageWrapper>
+                        <Image
+                            src={image}
+                            alt={name}
+                            fill
+                        />
+                    </MainImageWrapper>
+                </Link>
                 <SubImagesWrapper>
                     {screenshots.map((screenshot, index) => (
-                        <SubImage key={index}>
-                            <Image
-                                src={screenshot}
-                                alt={`${name} Screenshot ${index}`}
-                                fill
-                            />
-                        </SubImage>
+                        <Link
+                            href={`/games/[id]`}
+                            as={`/games/${id}`}
+                            key={index}
+                        >
+                            <SubImage>
+                                <Image
+                                    src={screenshot}
+                                    alt={`${name} Screenshot ${index}`}
+                                    fill
+                                />
+                            </SubImage>
+                        </Link>
                     ))}
                 </SubImagesWrapper>
             </ImagesWrapper>

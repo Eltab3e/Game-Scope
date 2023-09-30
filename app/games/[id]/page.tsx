@@ -1,10 +1,15 @@
 "use client";
+
+//required
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useFetchGameById } from "@/shared/hooks/games/useFetchGameById";
 import Image from "next/image";
 import styled from "styled-components";
+//components
+import Wrapper from "@/hoc/Wrapper";
 import Error from "@/components/shared/Error";
+import { useState } from "react";
 
 interface Params {
     params: {
@@ -13,7 +18,6 @@ interface Params {
 }
 
 const Container = styled.div`
-    flex: 0.5;
     display: flex;
     flex-direction: column;
 `;
@@ -21,21 +25,17 @@ const Container = styled.div`
 const ImageWrapper = styled.div`
     position: relative;
     overflow: hidden;
-    height: 41rem;
-    border-radius: 2rem 2rem 0 0;
+    height: 70vh;
 `;
 
 const TextWrapper = styled.div`
-    background-color: ${(props) => props.theme.colors.secondaryBg};
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 2rem;
-    border-radius: 0 0 2rem 2rem;
 `;
 
 const Title = styled.h5`
-    font-size: ${(props) => props.theme.fontSizes.h5};
+    font-size: ${(props) => props.theme.fontSizes.h2};
     font-weight: 600;
     line-height: 140%;
 `;
@@ -43,7 +43,6 @@ const Title = styled.h5`
 const Info = styled.div`
     display: flex;
     align-items: center;
-    gap: 1.2rem;
 `;
 
 const Avatar = styled.div`
@@ -65,9 +64,27 @@ const Released = styled.p`
     line-height: 140%;
 `;
 
+const Link = styled.a`
+    color: #007bff; /* Change the color to your preferred link color */
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 5px; /* Add some spacing between the links and text */
+`;
+
 const Game = ({ params: { id } }: Params) => {
+    const [showFullDescription, setShowFullDescription] = useState(false);
+
     const { data, isLoading, error, isError } = useFetchGameById(id);
-    console.log("data", data);
+
+    const cleanDescription = data?.description ? data.description.replace(/<p>|<\/p>/g, "") : "";
+
+    const maxCharacters = 500;
+    const shortDescription = cleanDescription.slice(0, maxCharacters);
+    const fullDescription = cleanDescription;
+
+    const toggleDescription = () => {
+        setShowFullDescription(!showFullDescription);
+    };
 
     return (
         <Container>
@@ -85,26 +102,35 @@ const Game = ({ params: { id } }: Params) => {
                         <Image
                             src={data.background_image}
                             alt={data.name}
-                            width={600}
-                            height={410}
+                            fill
                             priority
                         />
                     </ImageWrapper>
 
-                    <TextWrapper>
-                        <Title>{data.name}</Title>
-                        <Info>
-                            <Avatar>
-                                <Image
-                                    src={"/icons/List.svg"}
-                                    alt="icon"
-                                    fill
-                                />
-                            </Avatar>
-                            {/* <Name>Platforms: {data.platforms}</Name>
-                            <Released>Release Date: {data.released}</Released> */}
-                        </Info>
-                    </TextWrapper>
+                    <Wrapper>
+                        <TextWrapper>
+                            <Title>{data.name}</Title>
+                            <Info>
+                                <Name>
+                                    Story:
+                                    <br />
+                                    {showFullDescription ? (
+                                        <>
+                                            {fullDescription}.
+                                            <Link onClick={toggleDescription}>Show Less</Link>
+                                        </>
+                                    ) : (
+                                        <>
+                                            {shortDescription}
+                                            {cleanDescription.length > maxCharacters && (
+                                                <Link onClick={toggleDescription}>Show More</Link>
+                                            )}
+                                        </>
+                                    )}
+                                </Name>
+                            </Info>
+                        </TextWrapper>
+                    </Wrapper>
                 </>
             )}
         </Container>
