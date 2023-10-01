@@ -10,6 +10,8 @@ import styled from "styled-components";
 import Wrapper from "@/hoc/Wrapper";
 import Error from "@/components/shared/Error";
 import { useState } from "react";
+import Heading from "@/components/shared/Heading";
+import { space } from "@/app/layout";
 
 interface Params {
     params: {
@@ -20,29 +22,45 @@ interface Params {
 const Container = styled.div`
     display: flex;
     flex-direction: column;
+    gap: 3rem;
 `;
 
 const ImageWrapper = styled.div`
     position: relative;
     overflow: hidden;
-    height: 70vh;
+    height: 56rem;
 `;
 
 const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 3rem;
 `;
 
 const Title = styled.h5`
-    font-size: ${(props) => props.theme.fontSizes.h2};
+    color: ${(props) => props.theme.colors.grey};
+    font-size: ${(props) => props.theme.fontSizes.h5};
     font-weight: 600;
-    line-height: 140%;
+    line-height: 160%;
 `;
 
 const Info = styled.div`
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+`;
+
+const Text = styled.p`
+    font-size: ${(props) => props.theme.fontSizes.base};
+    font-weight: 400;
+    line-height: 160%;
+`;
+
+const Link = styled.a`
+    color: #007bff;
+    margin-left: 5px;
+    text-decoration: underline;
+    cursor: pointer;
 `;
 
 const Avatar = styled.div`
@@ -51,24 +69,15 @@ const Avatar = styled.div`
     height: 2.5rem;
 `;
 
-const Name = styled.p`
-    font-size: ${(props) => props.theme.fontSizes.base};
-    font-weight: 400;
-    line-height: 140%;
+const Additionals = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 `;
 
-const Released = styled.p`
-    margin-left: auto;
-    font-size: ${(props) => props.theme.fontSizes.base};
-    font-weight: 400;
-    line-height: 140%;
-`;
-
-const Link = styled.a`
-    color: #007bff; /* Change the color to your preferred link color */
-    text-decoration: underline;
-    cursor: pointer;
-    margin-left: 5px; /* Add some spacing between the links and text */
+const AdditionalsWrapper = styled.div`
+    display: flex;
+    gap: 1rem;
 `;
 
 const Game = ({ params: { id } }: Params) => {
@@ -76,7 +85,9 @@ const Game = ({ params: { id } }: Params) => {
 
     const { data, isLoading, error, isError } = useFetchGameById(id);
 
-    const cleanDescription = data?.description ? data.description.replace(/<p>|<\/p>/g, "") : "";
+    const cleanDescription = data?.description
+        ? data.description.replace(/<p>|<\/p>|<br\s*\/?>/g, "")
+        : "";
 
     const maxCharacters = 500;
     const shortDescription = cleanDescription.slice(0, maxCharacters);
@@ -87,33 +98,45 @@ const Game = ({ params: { id } }: Params) => {
     };
 
     return (
-        <Container>
-            {isLoading ? (
-                <Skeleton
-                    count={1}
-                    width={630}
-                    height={410}
-                />
-            ) : isError ? (
-                <Error>{(error as Error).message}</Error>
-            ) : (
-                <>
-                    <ImageWrapper>
-                        <Image
-                            src={data.background_image}
-                            alt={data.name}
-                            fill
-                            priority
-                        />
-                    </ImageWrapper>
+        <Wrapper>
+            <Container>
+                {isLoading ? (
+                    <Skeleton
+                        count={1}
+                        width={630}
+                        height={410}
+                    />
+                ) : isError ? (
+                    <Error>{(error as Error).message}</Error>
+                ) : (
+                    <>
+                        <ImageWrapper>
+                            <Image
+                                src={data.background_image}
+                                alt={data.name}
+                                fill
+                                priority
+                            />
+                        </ImageWrapper>
 
-                    <Wrapper>
                         <TextWrapper>
-                            <Title>{data.name}</Title>
+                            <Heading
+                                main={data.name}
+                                sub={`Released: ${data.released}`}
+                            />
+
                             <Info>
-                                <Name>
-                                    Story:
-                                    <br />
+                                <Title className={space.className}>Available On:</Title>
+                                <Text>
+                                    {data.platforms
+                                        .map((platform: any) => platform.platform.name)
+                                        .join(", ")}
+                                </Text>
+                            </Info>
+
+                            <Info>
+                                <Title className={space.className}>Description:</Title>
+                                <Text>
                                     {showFullDescription ? (
                                         <>
                                             {fullDescription}.
@@ -127,13 +150,43 @@ const Game = ({ params: { id } }: Params) => {
                                             )}
                                         </>
                                     )}
-                                </Name>
+                                </Text>
+                            </Info>
+
+                            <Info>
+                                <Title className={space.className}>
+                                    Ratings: (Overall {data.rating}/5)
+                                </Title>
+                                <Additionals>
+                                    {data.ratings.map((rating: any) => (
+                                        <AdditionalsWrapper>
+                                            <Avatar>
+                                                {data.rating > 3 ? (
+                                                    <Image
+                                                        src={"/icons/Star.svg"}
+                                                        alt="star"
+                                                        fill
+                                                    />
+                                                ) : (
+                                                    <Image
+                                                        src={"/icons/Halfstar.svg"}
+                                                        alt="half star"
+                                                        fill
+                                                    />
+                                                )}
+                                            </Avatar>
+                                            <Text>
+                                                {rating.count} voted {rating.title}.
+                                            </Text>
+                                        </AdditionalsWrapper>
+                                    ))}
+                                </Additionals>
                             </Info>
                         </TextWrapper>
-                    </Wrapper>
-                </>
-            )}
-        </Container>
+                    </>
+                )}
+            </Container>
+        </Wrapper>
     );
 };
 
