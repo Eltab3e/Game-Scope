@@ -103,87 +103,88 @@ const Game = ({ params: { id } }: Params) => {
                 {isLoading ? (
                     <Skeleton
                         count={1}
-                        width={630}
-                        height={410}
+                        width={1120}
+                        height={560}
                     />
                 ) : isError ? (
                     <Error>{(error as Error).message}</Error>
                 ) : (
-                    <>
-                        <ImageWrapper>
-                            <Image
-                                src={data.background_image}
-                                alt={data.name}
-                                fill
-                                priority
-                            />
-                        </ImageWrapper>
+                    <ImageWrapper>
+                        <Image
+                            src={data.background_image}
+                            alt={data.name}
+                            fill
+                            priority
+                        />
+                    </ImageWrapper>
+                )}
 
-                        <TextWrapper>
-                            <Heading
-                                main={data.name}
-                                sub={`Released: ${data.released}`}
-                            />
+                {isLoading ? (
+                    <Skeleton
+                        count={3}
+                        width={630}
+                        height={100}
+                        style={{ marginTop: "30px" }}
+                    />
+                ) : isError ? (
+                    <Error>{(error as Error).message}</Error>
+                ) : (
+                    <TextWrapper>
+                        <Heading
+                            main={data.name}
+                            sub={`Released: ${data.released}`}
+                        />
 
-                            <Info>
-                                <Title className={space.className}>Available On:</Title>
-                                <Text>
-                                    {data.platforms
-                                        .map((platform: any) => platform.platform.name)
-                                        .join(", ")}
-                                </Text>
-                            </Info>
+                        <Info>
+                            <Title className={space.className}>Available On:</Title>
+                            <Text>
+                                {data.platforms
+                                    .map((platform: any) => platform.platform.name)
+                                    .join(", ")}
+                            </Text>
+                        </Info>
 
-                            <Info>
-                                <Title className={space.className}>Description:</Title>
-                                <Text>
-                                    {showFullDescription ? (
-                                        <>
-                                            {fullDescription}.
-                                            <Link onClick={toggleDescription}>Show Less</Link>
-                                        </>
-                                    ) : (
-                                        <>
-                                            {shortDescription}
-                                            {cleanDescription.length > maxCharacters && (
-                                                <Link onClick={toggleDescription}>Show More</Link>
-                                            )}
-                                        </>
-                                    )}
-                                </Text>
-                            </Info>
+                        <Info>
+                            <Title className={space.className}>Description:</Title>
+                            <Text>
+                                {showFullDescription ? (
+                                    <>
+                                        {fullDescription}.
+                                        <Link onClick={toggleDescription}>Show Less</Link>
+                                    </>
+                                ) : (
+                                    <>
+                                        {shortDescription}
+                                        {cleanDescription.length > maxCharacters && (
+                                            <Link onClick={toggleDescription}>Show More</Link>
+                                        )}
+                                    </>
+                                )}
+                            </Text>
+                        </Info>
 
-                            <Info>
-                                <Title className={space.className}>
-                                    Ratings: (Overall {data.rating}/5)
-                                </Title>
-                                <Additionals>
-                                    {data.ratings.map((rating: any) => (
-                                        <AdditionalsWrapper>
-                                            <Avatar>
-                                                {data.rating > 3 ? (
-                                                    <Image
-                                                        src={"/icons/Star.svg"}
-                                                        alt="star"
-                                                        fill
-                                                    />
-                                                ) : (
-                                                    <Image
-                                                        src={"/icons/Halfstar.svg"}
-                                                        alt="half star"
-                                                        fill
-                                                    />
-                                                )}
-                                            </Avatar>
-                                            <Text>
-                                                {rating.count} voted {rating.title}.
-                                            </Text>
-                                        </AdditionalsWrapper>
-                                    ))}
-                                </Additionals>
-                            </Info>
-                        </TextWrapper>
-                    </>
+                        <Info>
+                            <Title className={space.className}>
+                                Ratings: (Overall {data.rating}/5)
+                            </Title>
+                            <Additionals>
+                                {data.ratings.map((rating: any) => (
+                                    <AdditionalsWrapper>
+                                        <Avatar>
+                                            <Image
+                                                src={"/icons/People.svg"}
+                                                alt="star"
+                                                fill
+                                            />
+                                        </Avatar>
+                                        <Text>
+                                            {rating.count} voted {rating.title}.
+                                        </Text>
+                                    </AdditionalsWrapper>
+                                ))}
+                            </Additionals>
+                        </Info>
+                    </TextWrapper>
                 )}
             </Container>
         </Wrapper>
