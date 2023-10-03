@@ -1,17 +1,18 @@
 "use client";
 
 //required
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-import { useFetchGameById } from "@/shared/hooks/games/useFetchGameById";
+import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { space } from "@/app/layout";
+import { useFetchGameById } from "@/shared/hooks/games/useFetchGameById";
 //components
 import Wrapper from "@/hoc/Wrapper";
 import Error from "@/components/shared/Error";
-import { useState } from "react";
 import Heading from "@/components/shared/Heading";
-import { space } from "@/app/layout";
 
 interface Params {
     params: {
@@ -31,10 +32,10 @@ const ImageWrapper = styled.div`
     height: 56rem;
 `;
 
-const TextWrapper = styled.div`
+const Info = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1rem;
 `;
 
 const Title = styled.h5`
@@ -44,20 +45,20 @@ const Title = styled.h5`
     line-height: 160%;
 `;
 
-const Info = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-`;
-
 const Text = styled.p`
     font-size: ${(props) => props.theme.fontSizes.base};
-    font-weight: 400;
     line-height: 160%;
 `;
 
-const Link = styled.a`
-    color: #007bff;
+const Links = styled.p`
+    font-size: ${(props) => props.theme.fontSizes.base};
+    line-height: 160%;
+    text-decoration: underline;
+    cursor: pointer;
+`;
+
+const Show = styled.a`
+    color: ${(props) => props.theme.colors.purple};
     margin-left: 5px;
     text-decoration: underline;
     cursor: pointer;
@@ -69,13 +70,7 @@ const Avatar = styled.div`
     height: 2.5rem;
 `;
 
-const Additionals = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-`;
-
-const AdditionalsWrapper = styled.div`
+const More = styled.div`
     display: flex;
     gap: 1rem;
 `;
@@ -129,20 +124,11 @@ const Game = ({ params: { id } }: Params) => {
                 ) : isError ? (
                     <Error>{(error as Error).message}</Error>
                 ) : (
-                    <TextWrapper>
+                    <>
                         <Heading
                             main={data.name}
                             sub={`Released: ${data.released}`}
                         />
-
-                        <Info>
-                            <Title className={space.className}>Available On:</Title>
-                            <Text>
-                                {data.platforms
-                                    .map((platform: any) => platform.platform.name)
-                                    .join(", ")}
-                            </Text>
-                        </Info>
 
                         <Info>
                             <Title className={space.className}>Description:</Title>
@@ -150,13 +136,13 @@ const Game = ({ params: { id } }: Params) => {
                                 {showFullDescription ? (
                                     <>
                                         {fullDescription}.
-                                        <Link onClick={toggleDescription}>Show Less</Link>
+                                        <Show onClick={toggleDescription}>Show Less</Show>
                                     </>
                                 ) : (
                                     <>
                                         {shortDescription}
                                         {cleanDescription.length > maxCharacters && (
-                                            <Link onClick={toggleDescription}>Show More</Link>
+                                            <Show onClick={toggleDescription}>...Show More</Show>
                                         )}
                                     </>
                                 )}
@@ -164,27 +150,48 @@ const Game = ({ params: { id } }: Params) => {
                         </Info>
 
                         <Info>
+                            <Title className={space.className}>Available On:</Title>
+                            {data.stores.map((store: any) => (
+                                <More>
+                                    <Avatar>
+                                        <Image
+                                            src={"/icons/Hash.svg"}
+                                            alt="star"
+                                            fill
+                                        />
+                                    </Avatar>
+                                    <Links>
+                                        <Link
+                                            href={`https://${store.store.domain}`}
+                                            target="_blank"
+                                        >
+                                            {store.store.name}
+                                        </Link>
+                                    </Links>
+                                </More>
+                            ))}
+                        </Info>
+
+                        <Info>
                             <Title className={space.className}>
                                 Ratings: (Overall {data.rating}/5)
                             </Title>
-                            <Additionals>
-                                {data.ratings.map((rating: any) => (
-                                    <AdditionalsWrapper>
-                                        <Avatar>
-                                            <Image
-                                                src={"/icons/People.svg"}
-                                                alt="star"
-                                                fill
-                                            />
-                                        </Avatar>
-                                        <Text>
-                                            {rating.count} voted {rating.title}.
-                                        </Text>
-                                    </AdditionalsWrapper>
-                                ))}
-                            </Additionals>
+                            {data.ratings.map((rating: any) => (
+                                <More>
+                                    <Avatar>
+                                        <Image
+                                            src={"/icons/People.svg"}
+                                            alt="star"
+                                            fill
+                                        />
+                                    </Avatar>
+                                    <Text>
+                                        {rating.count} voted {rating.title}.
+                                    </Text>
+                                </More>
+                            ))}
                         </Info>
-                    </TextWrapper>
+                    </>
                 )}
             </Container>
         </Wrapper>
