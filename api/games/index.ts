@@ -33,3 +33,14 @@ export const fetchGameTrailer = (id: number) => {
             throw err;
         });
 };
+
+export const fetchGameScreenshots = (id: number) => {
+    return apiClient
+        .get(`games/${id}/screenshots`)
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => {
+            throw err;
+        });
+};

@@ -4,7 +4,8 @@
 import styled from "styled-components";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { useFetchGameById } from "@/shared/hooks/games/useFetchGameById";
+import { UseQueryResult, useQueries } from "@tanstack/react-query";
+import { fetchGameById, fetchGameScreenshots } from "@/api/games";
 //components
 import Wrapper from "@/hoc/Wrapper";
 import Error from "@/components/shared/Error";
@@ -13,6 +14,8 @@ import Description from "@/components/Game/Description";
 import Ratings from "@/components/Game/Ratings";
 import Cover from "@/components/Game/Cover";
 import Stores from "@/components/Game/Stores";
+import Screenshots from "@/components/Game/Screenshots";
+import { space } from "@/app/layout";
 
 interface Params {
     params: {
@@ -20,45 +23,94 @@ interface Params {
     };
 }
 
-const Container = styled.div`
+const DetailsContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 3rem;
 `;
 
-const Game = ({ params: { id } }: Params) => {
-    const { data, isLoading, error, isError } = useFetchGameById(id);
+const ImagesWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+`;
 
-    return (
-        <Wrapper>
-            {isLoading ? (
+const Title = styled.h5`
+    color: ${(props) => props.theme.colors.grey};
+    font-size: ${(props) => props.theme.fontSizes.h5};
+    font-weight: 600;
+    line-height: 160%;
+`;
+
+const Gallery = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 3rem;
+`;
+
+const Game = ({ params: { id } }: Params) => {
+    const results: UseQueryResult<any>[] = useQueries({
+        queries: [
+            { queryKey: ["details", id], queryFn: () => fetchGameById(id) },
+            { queryKey: ["screenshots", id], queryFn: () => fetchGameScreenshots(id) },
+        ],
+    });
+
+    const isLoading = results.some((result) => result.isLoading);
+    const isError = results.some((result) => result.isError);
+    const details = results[0].data;
+    const screenshots = results[1].data;
+
+    if (isLoading) {
+        return (
+            <Wrapper>
                 <Skeleton
                     count={1}
                     width={"100%"}
                     height={"71rem"}
                 />
-            ) : isError ? (
-                <Error>{(error as Error).message}</Error>
-            ) : (
-                <Container>
-                    <Cover
-                        imageUrl={data.background_image}
-                        alt={data.name}
-                    />
-                    <Heading
-                        main={data.name}
-                        sub={`Released: ${data.released}`}
-                    />
-                    <Description description={data.description} />
-                    <Stores stores={data.stores} />
-                    <Ratings
-                        rating={data.rating}
-                        ratings={data.ratings}
-                    />
-                </Container>
-            )}
+            </Wrapper>
+        );
+    }
+
+    // if (isError) {
+    //     return (
+    //         <Wrapper>
+    //             <Error>{(error as Error).message}</Error>
+    //         </Wrapper>
+    //     );
+    // }
+
+    return (
+        <Wrapper>
+            <DetailsContainer>
+                <Cover
+                    imageUrl={details.background_image}
+                    alt={details.name}
+                />
+                <Heading
+                    main={details.name}
+                    sub={`Released: ${details.released}`}
+                />
+                <Description description={details.description} />
+                <Stores stores={details.stores} />
+                <Ratings
+                    rating={details.rating}
+                    ratings={details.ratings}
+                />
+            </DetailsContainer>
+
+            <ImagesWrapper>
+                <Title className={space.className}>Screenshots:</Title>
+                {screenshots.results.map((screenshot: any) => (
+                    <Gallery>
+                        <Screenshots imageUrl={screenshot.image} />
+                    </Gallery>
+                ))}
+            </ImagesWrapper>
         </Wrapper>
     );
 };
-
 export default Game;
