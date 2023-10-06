@@ -1,5 +1,4 @@
 //required
-import { ReactNode } from "react";
 import styled from "styled-components";
 
 const Message = styled.p`
@@ -8,8 +7,8 @@ const Message = styled.p`
     font-weight: 400;
 `;
 
-const Error = ({ children }: { children: ReactNode }) => {
-    return <Message>{children}</Message>;
+const Error = () => {
+    return <Message>Oops, An Unkown Error Occurred!</Message>;
 };
 
 export default Error;

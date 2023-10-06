@@ -44,7 +44,7 @@ const EyeIcon = () => (
 );
 
 const Developers = () => {
-    const { data, isLoading, error, isError } = useFetchDevelopers();
+    const { data, isLoading, isError } = useFetchDevelopers();
 
     const developers = data?.results;
 
@@ -78,7 +78,7 @@ const Developers = () => {
                         />
                     ))
                 ) : isError ? (
-                    <Error>{(error as Error).message}</Error>
+                    <Error />
                 ) : (
                     developers.map((developer: any, index: number) => (
                         <DeveloperCard

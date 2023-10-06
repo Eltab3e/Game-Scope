@@ -43,7 +43,7 @@ const RocketIcon = () => (
 );
 
 const Trending = () => {
-    const { data, isLoading, error, isError } = useFetchAllGames();
+    const { data, isLoading, isError } = useFetchAllGames();
 
     const games = data?.results;
 
@@ -78,7 +78,7 @@ const Trending = () => {
                         />
                     ))
                 ) : isError ? (
-                    <Error>{(error as Error).message}</Error>
+                    <Error />
                 ) : (
                     games.map((game: any) => {
                         const screenshots = game.short_screenshots

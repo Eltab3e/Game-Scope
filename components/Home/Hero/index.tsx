@@ -55,7 +55,7 @@ const RocketIcon = () => (
 );
 
 const Hero = () => {
-    const { data, isLoading, error, isError } = useFetchGameById(58175);
+    const { data, isLoading, isError } = useFetchGameById(58175);
 
     return (
         <Container>
@@ -120,7 +120,7 @@ const Hero = () => {
                     height={410}
                 />
             ) : isError ? (
-                <Error>{(error as Error).message}</Error>
+                <Error />
             ) : (
                 <HeroCard
                     key={data.id}

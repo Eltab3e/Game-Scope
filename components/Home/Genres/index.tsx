@@ -44,7 +44,7 @@ const MagnifyingGlassIcon = () => (
 );
 
 const Genres = () => {
-    const { data, isLoading, error, isError } = useFetchGenres();
+    const { data, isLoading, isError } = useFetchGenres();
 
     const genres = data?.results;
 
@@ -82,7 +82,7 @@ const Genres = () => {
                         />
                     ))
                 ) : isError ? (
-                    <Error>{(error as Error).message}</Error>
+                    <Error />
                 ) : (
                     genres.map((genre: any, index: number) => {
                         return (

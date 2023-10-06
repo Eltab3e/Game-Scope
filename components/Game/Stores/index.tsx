@@ -17,21 +17,9 @@ const Title = styled.h5`
     line-height: 160%;
 `;
 
-const Text = styled.p`
-    font-size: ${(props) => props.theme.fontSizes.base};
-    line-height: 160%;
-`;
-
 const Links = styled.p`
     font-size: ${(props) => props.theme.fontSizes.base};
     line-height: 160%;
-    text-decoration: underline;
-    cursor: pointer;
-`;
-
-const Show = styled.a`
-    color: ${(props) => props.theme.colors.purple};
-    margin-left: 5px;
     text-decoration: underline;
     cursor: pointer;
 `;

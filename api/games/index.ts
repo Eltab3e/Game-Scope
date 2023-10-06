@@ -44,3 +44,14 @@ export const fetchGameScreenshots = (id: number) => {
             throw err;
         });
 };
+
+export const fetchGameAdditions = (id: number) => {
+    return apiClient
+        .get(`games/${id}/additions`)
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => {
+            throw err;
+        });
+};

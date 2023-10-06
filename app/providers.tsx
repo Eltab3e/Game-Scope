@@ -1,5 +1,3 @@
-"use client";
-
 //required
 import { ThemeProvider } from "styled-components";
 import { SkeletonTheme } from "react-loading-skeleton";

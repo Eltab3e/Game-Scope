@@ -2,11 +2,12 @@
 
 //required
 import "../styles/globals.css";
-// import { Metadata } from "next";
+import { Metadata } from "next";
 import { Space_Mono, Work_Sans } from "next/font/google";
 import { Providers } from "./providers";
 //components
 import Navbar from "@/components/Layout/Navbar";
+import Wrapper from "@/hoc/Wrapper";
 
 export const space = Space_Mono({
     weight: ["400", "700"],
@@ -30,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body className={work.className}>
                 <Providers>
                     <Navbar />
-                    {children}
+                    <Wrapper>{children}</Wrapper>
                 </Providers>
             </body>
         </html>

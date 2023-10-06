@@ -42,7 +42,7 @@ const GlobeIcon = () => (
 );
 
 const Stores = () => {
-    const { data, isLoading, error, isError } = useFetchStores();
+    const { data, isLoading, isError } = useFetchStores();
 
     const stores = data?.results;
     console.log("stores", stores);
@@ -74,7 +74,7 @@ const Stores = () => {
                         />
                     ))
                 ) : isError ? (
-                    <Error>{(error as Error).message}</Error>
+                    <Error />
                 ) : (
                     stores.map((store: any) => (
                         <StoreCard

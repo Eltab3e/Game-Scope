@@ -7,8 +7,8 @@ import { useFetchGameTrailer } from "@/shared/hooks/games/useFetchGameTrailer";
 import Error from "@/components/shared/Error";
 
 const Container = styled.div`
-    width: 99.2vw;
-    height: 100vh;
+    width: 100%;
+    height: 75vh;
     position: relative;
     overflow: hidden;
 `;
@@ -20,11 +20,10 @@ const VideoBackground = styled.video`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -1;
 `;
 
 const Highlight = () => {
-    const { data, isLoading, error, isError } = useFetchGameTrailer(2454);
+    const { data, isLoading, isError } = useFetchGameTrailer(2454);
 
     const trailer = data?.results[0]?.data[480];
 
@@ -36,7 +35,7 @@ const Highlight = () => {
                     height={"100%"}
                 />
             ) : isError ? (
-                <Error>{(error as Error).message}</Error>
+                <Error />
             ) : (
                 trailer && (
                     <VideoBackground

@@ -6,8 +6,8 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { UseQueryResult, useQueries } from "@tanstack/react-query";
 import { fetchGameById, fetchGameScreenshots } from "@/api/games";
+import { space } from "@/app/layout";
 //components
-import Wrapper from "@/hoc/Wrapper";
 import Error from "@/components/shared/Error";
 import Heading from "@/components/shared/Heading";
 import Description from "@/components/Game/Description";
@@ -15,7 +15,6 @@ import Ratings from "@/components/Game/Ratings";
 import Cover from "@/components/Game/Cover";
 import Stores from "@/components/Game/Stores";
 import Screenshots from "@/components/Game/Screenshots";
-import { space } from "@/app/layout";
 
 interface Params {
     params: {
@@ -59,58 +58,50 @@ const Game = ({ params: { id } }: Params) => {
     });
 
     const isLoading = results.some((result) => result.isLoading);
+    const error = results.some((result) => result.error);
     const isError = results.some((result) => result.isError);
     const details = results[0].data;
     const screenshots = results[1].data;
 
     if (isLoading) {
         return (
-            <Wrapper>
-                <Skeleton
-                    count={1}
-                    width={"100%"}
-                    height={"71rem"}
-                />
-            </Wrapper>
+            <Skeleton
+                count={1}
+                width={"100%"}
+                height={"71rem"}
+            />
         );
     }
 
-    // if (isError) {
-    //     return (
-    //         <Wrapper>
-    //             <Error>{(error as Error).message}</Error>
-    //         </Wrapper>
-    //     );
-    // }
+    if (isError) {
+        return <Error />;
+    }
 
     return (
-        <Wrapper>
-            <DetailsContainer>
-                <Cover
-                    imageUrl={details.background_image}
-                    alt={details.name}
-                />
-                <Heading
-                    main={details.name}
-                    sub={`Released: ${details.released}`}
-                />
-                <Description description={details.description} />
-                <Stores stores={details.stores} />
-                <Ratings
-                    rating={details.rating}
-                    ratings={details.ratings}
-                />
-            </DetailsContainer>
-
+        <DetailsContainer>
+            <Cover
+                imageUrl={details.background_image}
+                alt={details.name}
+            />
+            <Heading
+                main={details.name}
+                sub={`Released: ${details.released}`}
+            />
+            <Description description={details.description} />
+            <Stores stores={details.stores} />
+            <Ratings
+                rating={details.rating}
+                ratings={details.ratings}
+            />
             <ImagesWrapper>
                 <Title className={space.className}>Screenshots:</Title>
-                {screenshots.results.map((screenshot: any) => (
-                    <Gallery>
+                <Gallery>
+                    {screenshots.results.map((screenshot: any) => (
                         <Screenshots imageUrl={screenshot.image} />
-                    </Gallery>
-                ))}
+                    ))}
+                </Gallery>
             </ImagesWrapper>
-        </Wrapper>
+        </DetailsContainer>
     );
 };
 export default Game;

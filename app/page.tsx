@@ -1,7 +1,6 @@
 "use client";
 
 //components
-import Wrapper from "@/hoc/Wrapper";
 import Hero from "@/components/Home/Hero";
 import Trending from "@/components/Home/Trending";
 import Developers from "@/components/Home/Developers";
@@ -15,19 +14,15 @@ import Footer from "@/components/Home/Footer";
 export default function Home() {
     return (
         <>
-            <Wrapper>
-                <Hero />
-                <Trending />
-                <Developers />
-                <Genres />
-                <Stores />
-            </Wrapper>
+            <Hero />
+            <Trending />
+            <Developers />
+            <Genres />
+            <Stores />
             <Highlight />
-            <Wrapper>
-                <About />
-                <Subscribe />
-                <Footer />
-            </Wrapper>
+            <About />
+            <Subscribe />
+            <Footer />
         </>
     );
 }
