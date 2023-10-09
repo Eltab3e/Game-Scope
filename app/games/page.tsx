@@ -11,6 +11,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import Error from "@/components/shared/Error";
 import GameCard from "@/components/shared/Cards/GameCard";
 import Button from "@/components/shared/Button";
+import Heading from "@/components/shared/Heading";
 
 const DetailsContainer = styled.div`
     display: flex;
@@ -28,6 +29,7 @@ const ButtonWrapper = styled.div`
     align-self: center;
     display: flex;
     width: 24.7rem;
+    padding-top: 4rem;
 `;
 
 const RocketIcon = () => (
@@ -56,6 +58,8 @@ const Games = () => {
 
     return (
         <DetailsContainer>
+            <Heading main="All Games:" />
+
             <Gallery>
                 {isLoading || !games ? (
                     Array.from({ length: 9 }).map((_, index) => (

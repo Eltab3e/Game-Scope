@@ -1,5 +1,5 @@
 export const navLinks = [
-    { title: "Trending", url: "#trending" },
+    { title: "Games", url: "/games" },
     { title: "Developers", url: "#developers" },
     { title: "Stores", url: "#stores" },
     { title: "About", url: "#about" },
