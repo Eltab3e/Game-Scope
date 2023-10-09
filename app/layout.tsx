@@ -2,12 +2,11 @@
 
 //required
 import "../styles/globals.css";
-import { Metadata } from "next";
 import { Space_Mono, Work_Sans } from "next/font/google";
 import { Providers } from "./providers";
 //components
-import Navbar from "@/components/Layout/Navbar";
 import Wrapper from "@/hoc/Wrapper";
+import Navbar from "@/components/Layout/Navbar";
 
 export const space = Space_Mono({
     weight: ["400", "700"],
@@ -20,14 +19,12 @@ export const work = Work_Sans({
     subsets: ["latin"],
 });
 
-// export const metadata: Metadata = {
-//     title: "Game-Scope",
-//     description: "Your one-stop destination for all things gaming.",
-// };
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
+            <head>
+                <title>Game-Scope</title>
+            </head>
             <body className={work.className}>
                 <Providers>
                     <Navbar />

@@ -1,4 +1,5 @@
 //required
+import Image from "next/image";
 import styled from "styled-components";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -8,7 +9,6 @@ import { useFetchGenres } from "@/shared/hooks/genres/useFetchGenres";
 import GenreCard from "@/components/shared/Cards/GenreCard";
 import Heading from "@/components/shared/Heading";
 import Error from "@/components/shared/Error";
-import Image from "next/image";
 import Button from "@/components/shared/Button";
 
 const Container = styled.div`

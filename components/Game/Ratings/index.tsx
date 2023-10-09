@@ -1,7 +1,8 @@
-import { space } from "@/app/layout";
-import Image from "next/image";
+//required
 import React from "react";
+import Image from "next/image";
 import styled from "styled-components";
+import { space } from "@/app/layout";
 
 const Info = styled.div`
     display: flex;

@@ -5,8 +5,6 @@ import styled from "styled-components";
 import Button from "@/components/shared/Button";
 import Heading from "@/components/shared/Heading";
 
-const Container = styled.div``;
-
 const Wrapper = styled.div`
     background-color: ${(props) => props.theme.colors.secondaryBg};
     display: flex;
@@ -72,41 +70,39 @@ const SubscribeIcon = () => (
 
 const Subscribe = () => {
     return (
-        <Container>
-            <Wrapper>
-                <ImageSection>
-                    <Image
-                        src={"/images/photo.png"}
-                        alt="photo"
-                        fill
-                    />
-                </ImageSection>
+        <Wrapper>
+            <ImageSection>
+                <Image
+                    src={"/images/photo.png"}
+                    alt="photo"
+                    fill
+                />
+            </ImageSection>
 
-                <TextSection>
-                    <Heading
-                        main="Join Our Weekly Digest"
-                        sub="Get exclusive promotions & updates straight to your inbox."
-                    />
-                    <Form>
-                        <InputWrapper>
-                            <Input placeholder="Enter Your E-mail Here" />
-                        </InputWrapper>
+            <TextSection>
+                <Heading
+                    main="Join Our Weekly Digest"
+                    sub="Get exclusive promotions & updates straight to your inbox."
+                />
+                <Form>
+                    <InputWrapper>
+                        <Input placeholder="Enter Your E-mail Here" />
+                    </InputWrapper>
 
-                        <ButtonWrapper>
-                            <Button
-                                fullwidth
-                                variant="primary"
-                                height="secondary"
-                                padding="primary"
-                                preIcon={SubscribeIcon}
-                            >
-                                Subscribe
-                            </Button>
-                        </ButtonWrapper>
-                    </Form>
-                </TextSection>
-            </Wrapper>
-        </Container>
+                    <ButtonWrapper>
+                        <Button
+                            fullwidth
+                            variant="primary"
+                            height="secondary"
+                            padding="primary"
+                            preIcon={SubscribeIcon}
+                        >
+                            Subscribe
+                        </Button>
+                    </ButtonWrapper>
+                </Form>
+            </TextSection>
+        </Wrapper>
     );
 };
 

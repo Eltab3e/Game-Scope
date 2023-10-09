@@ -1,10 +1,10 @@
 //required
+import theme from "@/theme";
+import StyledComponentsRegistry from "@/lib/registry";
 import { ThemeProvider } from "styled-components";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import StyledComponentsRegistry from "@/lib/registry";
-import theme from "@/theme";
 
 export function Providers({ children }: { children: React.ReactNode }) {
     const queryClient = new QueryClient();

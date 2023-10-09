@@ -1,7 +1,7 @@
 //required
-import { space } from "@/app/layout";
 import Image from "next/image";
 import styled from "styled-components";
+import { space } from "@/app/layout";
 
 interface GenreCardProps {
     name: string;

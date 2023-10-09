@@ -1,6 +1,6 @@
-// GameDescription.js
-import { space } from "@/app/layout";
+//required
 import { useState } from "react";
+import { space } from "@/app/layout";
 import styled from "styled-components";
 
 const Info = styled.div`
