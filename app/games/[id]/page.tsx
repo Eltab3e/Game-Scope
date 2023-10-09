@@ -4,9 +4,9 @@
 import styled from "styled-components";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { space } from "@/app/layout";
 import { UseQueryResult, useQueries } from "@tanstack/react-query";
 import { fetchGameById, fetchGameScreenshots } from "@/api/games";
-import { space } from "@/app/layout";
 //components
 import Error from "@/components/shared/Error";
 import Heading from "@/components/shared/Heading";
@@ -43,7 +43,6 @@ const Title = styled.h5`
 
 const Gallery = styled.div`
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 3rem;

@@ -1,4 +1,6 @@
 //required
+import Link from "next/link";
+import Image from "next/image";
 import styled from "styled-components";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -8,7 +10,6 @@ import Heading from "@/components/shared/Heading";
 import GameCard from "@/components/shared/Cards/GameCard";
 import Error from "@/components/shared/Error";
 import Button from "@/components/shared/Button";
-import Image from "next/image";
 
 const Container = styled.div`
     display: flex;
@@ -21,7 +22,7 @@ const HeadingContainer = styled.div`
     justify-content: space-between;
 `;
 
-const ButtonWrapper = styled.div`
+const ButtonWrapper = styled(Link)`
     align-self: flex-end;
     display: flex;
     width: 24.7rem;
@@ -55,7 +56,7 @@ const Trending = () => {
                     sub="Checkout Our Weekly Updated Trending Games."
                 />
 
-                <ButtonWrapper>
+                <ButtonWrapper href={"/games"}>
                     <Button
                         fullwidth
                         variant="outline"
