@@ -49,7 +49,7 @@ const Developers = () => {
     const developers = data?.results;
 
     return (
-        <Container id="developers">
+        <Container>
             <TextContainer>
                 <Heading
                     main="Top Developers"

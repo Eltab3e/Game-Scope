@@ -48,7 +48,7 @@ const Stores = () => {
     console.log("stores", stores);
 
     return (
-        <Container id="stores">
+        <Container>
             <HeadingContainer>
                 <Heading main="Game Stores" />
 
