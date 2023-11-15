@@ -2,11 +2,13 @@
 <h3 align="center">The ultimate gaming hub.</h3>
 
 <h3 align="left">Screenshots:</h3>
-<img src="https://drive.google.com/uc?id=1TK0VB_yXp7gnX_OrSEenMPCyDTYTeCRS" alt="image1" width="900"> 
-<img src="https://drive.google.com/uc?id=1_xPo5t393rpjNj4ZICTFs3n7p76IXQDU" alt="image2" width="900"> 
-<img src="https://drive.google.com/uc?id=1MQMYJwjsz0RxrwQE1BTfMcDZ77LGz4nX" alt="image3" width="900"> 
-<img src="https://drive.google.com/uc?id=1JHk2s51ieIXUvrWGucS4FebWrLBEtWTx" alt="image3" width="900"> 
-<img src="https://drive.google.com/uc?id=1hDaXlD3W3oiO_KXSIBP6qjy5v1RiPilt" alt="image3" width="900"> 
+<img src="https://drive.google.com/uc?id=1HtxAeW-WRomb2WuWEp3UA66d4eaU5fX1" alt="image1" width="900">
+<img src="https://drive.google.com/uc?id=1N9Tixx-NAu4G-mqHL2_3cvE9cc0FIeOB" alt="image3" width="900">
+<img src="https://drive.google.com/uc?id=1mnugO2mAGfDtdnLmGpoMLLwA1r_w69EA" alt="image3" width="900">
+<img src="https://drive.google.com/uc?id=1gdQOOHrHac6lFk4TdG5VLWZkeFk-8Xin" alt="image2" width="900">
+<img src="https://drive.google.com/uc?id=1FMKBsfYD8eDkUlQsm-5-sAoqBsHCYEBb" alt="image3" width="900">
+<img src="https://drive.google.com/uc?id=1-g3nCRls_JsiIV5J7UH8tGP8dqOwlrLf" alt="image3" width="900">
+<img src="https://drive.google.com/uc?id=1QF4ogh8phTvIcMAyCCWA6SDp2D_G-Fl8" alt="image3" width="900">
 
 <h3 align="left">Languages and Tools:</h3>
 <p align="left"> 
